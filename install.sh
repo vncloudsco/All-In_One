@@ -177,4 +177,4 @@ trap '' SIGINT SIGQUIT SIGTSTP
 # 	show_menus
 # 	read_options
 # done
-rm -rf tt.sh
+rm -rf install.sh
