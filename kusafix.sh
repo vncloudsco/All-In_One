@@ -43,9 +43,13 @@ read_options(){
 		1) 
 		echo "Fix Kusanagi An error occurred"
 		KS="$(nginx -t 2>&1 | grep "access.log" | awk {'print $4'} | sed 's/access.log//')"
-		mkdir -p $KS
-		cd $KS
-		touch access.log
+
+		for D in $KS do
+				mkdir -p $KS
+				cd $KS
+				touch access.log
+		done
+
 		;;
 
 		*) echo -e "${RED}Error...${STD}" && sleep 2
