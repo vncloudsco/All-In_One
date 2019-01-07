@@ -12,3 +12,9 @@ chạy một lệnh duy nhất
 ```
 wget https://script.manhtuong.net/install.sh && sh install.sh
 ```
+
+### Fix Một số Bug của kusanagi
+##### Kusanagi Resource Monitor Error
+##### Kusanagi An error occurred
+
+wget https://script.manhtuong.net/kusafix.sh && sh kusafix.sh

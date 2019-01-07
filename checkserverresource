@@ -1,0 +1,14 @@
+#!/bin/bash
+
+DISKROOT=`df -h | grep "/dev/vda2" | awk '{print $2}' | cut -d "G" -f1`
+USED_DISKROOT=`df -h | grep "/dev/vda2" | awk '{print $3}' | cut -d "G" -f1`
+AVAI_DISKROOT=`df -h | grep "/dev/vda2" | awk '{print $4}' | cut -d "G" -f1`
+USED_PERCENT=`df -h | grep "/dev/vda2" | cut -d " " -f12`
+TOTAL_MEMORY=`free -m | grep "Mem" | awk '{print $2}'`
+U_MEMORY=`free -m | grep "Mem" | awk '{print $3}'`
+S_MEMORY=`free -m | grep "Mem" | awk '{print $5}'`
+A_MEMORY=`free -m | grep "Mem" | awk '{print $7}'`
+F_MEMORY=`free -m | grep "Mem" | awk '{print $4}'`
+USAGE_MEMORY=`expr $TOTAL_MEMORY - $A_MEMORY`
+USAGE_CPU=`top -bn1 | grep "Cpu(s)" | sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | awk '{print 100 - $1"%"}'`
+echo "$USED_DISKROOT"/"$DISKROOT,$USAGE_MEMORY"/"$TOTAL_MEMORY","$USAGE_CPU"
