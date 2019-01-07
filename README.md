@@ -18,3 +18,7 @@ wget https://script.manhtuong.net/install.sh && sh install.sh
 ##### Kusanagi An error occurred
 
 ``` wget https://script.manhtuong.net/kusafix.sh && sh kusafix.sh ```
+
+### Hỗ Trợ Cài Đặt Một Số Phần Mở Rộng Cho Kusanagi
+
+##### cài đặt SSL cho tên miền nhiều hơn 24 ký tự
