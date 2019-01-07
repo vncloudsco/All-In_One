@@ -45,8 +45,8 @@ read_options(){
 		KS="$(nginx -t 2>&1 | grep "access.log" | awk {'print $4'} | sed 's/access.log//')"
 
 		for D in $KS do
-				mkdir -p $KS
-				cd $KS
+				mkdir -p $D
+				cd $D
 				touch access.log
 		done
 
