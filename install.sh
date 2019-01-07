@@ -171,10 +171,10 @@ read_options(){
  
 trap '' SIGINT SIGQUIT SIGTSTP
  
-# while true
-# do
+ while true
+ do
  
-# 	show_menus
-# 	read_options
-# done
+	show_menus
+ 	read_options
+ done
 rm -rf install.sh
