@@ -17,4 +17,4 @@ wget https://script.manhtuong.net/install.sh && sh install.sh
 ##### Kusanagi Resource Monitor Error
 ##### Kusanagi An error occurred
 
-wget https://script.manhtuong.net/kusafix.sh && sh kusafix.sh
+``` wget https://script.manhtuong.net/kusafix.sh && sh kusafix.sh ```
