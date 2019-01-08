@@ -7,108 +7,108 @@ if [ "$Unbuntu" = "Ubuntu"]; then
 	echo "Ban Dang Su Dung He Dieu Hanh Unbuntu"
 	echo "He Dieu Hanh Unbuntu Chi Ho Tro Cac Phan Mem Duoi Day"
 
-RED='\033[0;41;30m'
-STD='\033[0;0;39m'
+	RED='\033[0;41;30m'
+	STD='\033[0;0;39m'
  
-pause(){
-  read -p "Press [Enter] key to continue..." fackEnterKey
-}
+		pause(){
+ 			 read -p "Press [Enter] key to continue..." fackEnterKey
+		}
 
-one(){
-	echo "one() called"
+	one(){
+		echo "one() called"
         pause
-}
+	}
  
-two(){
-	echo "two() called"
-        pause
-}
+	two(){
+		echo "two() called"
+        	pause
+	}
  
-show_menus() {
-	clear
-	echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"	
-	echo " Tenten_Zcom Install All In One Control Panel VPS  "
-	echo "Ban Dang Su Dung He Dieu Hanh Unbuntu"
-	echo "He Dieu Hanh Unbuntu Chi Ho Tro Cac Phan Mem Duoi Day"
-	echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-	echo "1. Cài Dat easyengine v3"
-	echo "2. Cai Dat easyengine v4"
-	echo "3. Thoat"
-}
+	show_menus() {
+		clear
+		echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"	
+		echo " Tenten_Zcom Install All In One Control Panel VPS  "
+		echo "Ban Dang Su Dung He Dieu Hanh Unbuntu"
+		echo "He Dieu Hanh Unbuntu Chi Ho Tro Cac Phan Mem Duoi Day"
+		echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+		echo "1. Cài Dat easyengine v3"
+		qecho "2. Cai Dat easyengine v4"
+		echo "3. Thoat"
+	}
 
-read_options(){
-	local choice
-	read -p "Enter choice [ 1 - 7]: " choice
-	case $choice in
+	read_options(){
+		local choice
+		read -p "Enter choice [ 1 - 7]: " choice
+		case $choice in
 
-		1 ) 
-			echo "Chuan Bi Cai Dat easyengine v3"
-				wget -qO ee rt.cx/ee && sudo bash ee
+			1 ) 
+				echo "Chuan Bi Cai Dat easyengine v3"
+					wget -qO ee rt.cx/ee && sudo bash ee
+				;;
+
+			2 ) 
+				echo "Chuan Bi Cai Dat easyengine v4"
+				sleep 3
+				echo "ban se duoc cai dat them menu"
+				echo "de su dung menu dung lenh tt"
+				wget -qO ee rt.cx/ee4 && sudo bash ee
+				wget script.manhtuong.net/menu.sh
+				mv menu.sh /usr/sbin/tt
 			;;
+			3 ) exit 0;;
 
-		2 ) 
-			echo "Chuan Bi Cai Dat easyengine v4"
-			sleep 3
-			echo "ban se duoc cai dat them menu"
-			echo "de su dung menu dung lenh tt"
-			wget -qO ee rt.cx/ee4 && sudo bash ee
-			wget script.manhtuong.net/menu.sh
-			mv menu.sh /usr/sbin/tt
-			;;
-		3 ) exit 0;;
-
-		*) echo -e "${RED}Error...${STD}" && sleep 2
-	esac
-}
+				*) echo -e "${RED}Error...${STD}" && sleep 2
+		esac
+	}
  
-trap '' SIGINT SIGQUIT SIGTSTP
+		trap '' SIGINT SIGQUIT SIGTSTP
  
- while true
- do
+	 while true
+	 do
  
-	show_menus
- 	read_options
- done
+		show_menus
+	 	read_options
+	 done
 # rm -rf install.sh
 
 else
 
 
-RED='\033[0;41;30m'
-STD='\033[0;0;39m'
+	RED='\033[0;41;30m'
+	STD='\033[0;0;39m'
  
-pause(){
-  read -p "Press [Enter] key to continue..." fackEnterKey
-}
+	pause(){
+  	read -p "Press [Enter] key to continue..." fackEnterKey
+	}
 
-one(){
-	echo "one() called"
-        pause
-}
+	one(){
+		echo "one() called"
+      	  pause
+	}
  
-two(){
-	echo "two() called"
-        pause
-}
+	two(){
+		echo "two() called"
+  	      pause
+	}
  
-show_menus() {
-	clear
-	echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"	
-	echo " Tenten_Zcom Install All In One Control Panel VPS  "
-	echo "Ban Dang Su Dung Centos Co The Cai Dat Duoc Cac Phan Mem Sau"
-	echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-	echo "1. Cai Dat Vestacp"
-	echo "2. Cai Dat Centos Web Panel"
-	echo "3. Cai Dat Kusanagi"
-	echo "4. Cai Dat Cpanel"
-	echo "5. Cai Dat Directadmin"
-	echo "6. Thoat"
-}
+	show_menus() {
+		clear
+		echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"	
+		echo " Tenten_Zcom Install All In One Control Panel VPS  "
+		echo "Ban Dang Su Dung Centos Co The Cai Dat Duoc Cac Phan Mem Sau"
+		echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+		echo "1. Cai Dat Vestacp"
+		echo "2. Cai Dat Centos Web Panel"
+		echo "3. Cai Dat Kusanagi"
+		echo "4. Cai Dat Cpanel"
+		echo "5. Cai Dat Directadmin"
+		echo "6. Thoat"
+	}	
 
-read_options(){
-	local choice
-	read -p "Enter choice [ 1 - 6]: " choice
-	case $choice in
+	read_options(){
+		local choice
+		read -p "Enter choice [ 1 - 6]: " choice
+		case $choice in
 		1 ) 
 			curl -O http://vestacp.com/pub/vst-install.sh
 			echo "Dang Tien Hanh Cai Dat Vestacp"
