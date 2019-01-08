@@ -7,6 +7,8 @@
 ##### Vestacp
 ##### easyengine v3
 ##### easyengine v4
+##### Vpssim
+##### hocvps
 chạy một lệnh duy nhất
 
 ```
