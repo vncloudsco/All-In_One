@@ -21,6 +21,17 @@ wget https://script.manhtuong.net/mt.sh && sh mt.sh
 
 ``` wget https://script.manhtuong.net/kusafix.sh && sh kusafix.sh ```
 
-### Hỗ Trợ Cài Đặt Một Số Phần Mở Rộng Cho Kusanagi
+### Hỗ Trợ Cài Đặt Một Số Phần Mở Rộng Cho vps
 
-##### cài đặt SSL cho tên miền nhiều hơn 24 ký tự
+##### Mout Ổ Cứng Cho Vps
+##### Tạo Thêm Swap
+##### Cai Đặt Maldet
+##### Zimbra - Login failed account in 5 minutes
+##### Tự Động KHởi Động Lại Service iRedMail
+##### Renew SSL Let's Encrypt for Zimbra Virtualhost
+##### Chặn IP Bằng IPTABLES
+
+
+```
+wget https://script.manhtuong.net/check.sh && sh check.sh
+```
