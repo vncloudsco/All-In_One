@@ -23,7 +23,7 @@ show_menus() {
 	echo " Kusanagi Auto Fix By Manhtuong "
 	echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 	echo "1. Fix Kusanagi Resource Monitor Error"
-	echo "2. Fix Kusanagi An error occurred"
+	echo "2. Fix Kusanagi ERR_CONNECTION_REFUSED"
 	echo "3. Thoat"
 
 }
@@ -49,6 +49,7 @@ read_options(){
 				mkdir -p $D
 				cd $D
 				touch access.log
+				service nginx restart
 		done
 
 		;;
