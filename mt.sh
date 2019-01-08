@@ -102,7 +102,9 @@ else
 		echo "3. Cai Dat Kusanagi"
 		echo "4. Cai Dat Cpanel"
 		echo "5. Cai Dat Directadmin"
-		echo "6. Thoat"
+		echo "6: Cai Dat Vpssim"
+		echo "7: Cai Dat Hocvps script"
+		echo "8. Thoat"
 	}	
 
 	read_options(){
@@ -216,12 +218,31 @@ else
 			;;
 		5 ) 
 			echo "Cai Dat Directadmin"
+			mkdir Directadmin
+			cd Directadmin
 			yum -y install wget gcc gcc-c++ flex bison make bind bind-libs bind-utils openssl openssl-devel perl quota libaio libcom_err-devel libcurl-devel gd zlib-devel zip unzip libcap-devel cronie bzip2 db4-devel cyrus-sasl-devel perl-ExtUtils-Embed autoconf automake libtool which
 			wget http://www.directadmin.com/setup.sh
 			chmod 755 setup.sh
 			./setup.sh
 			;;
-		6 ) exit 0;;
+		6 ) 
+			echo "Tien Hanh Cai Dat Vpssim Tu Nguon"
+			sleep 10
+			mkdir vpssim
+			cd vpssim
+			curl http://get.vpssim.vn -o vpssim && sh vpssim
+
+			;;
+		7 ) 
+			echo "Cai Dat HocVps"
+			sleep 10
+			mkdir hocvps
+			cd hocvps
+			curl -sO https://hocvps.com/install && bash install
+
+			;;
+		
+		8 ) exit 0;;
 
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
