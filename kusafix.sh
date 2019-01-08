@@ -38,6 +38,7 @@ read_options(){
 			cd /usr/src/cPanel
 			mv checkserverresource checkserverresource_old
 			wget wget https://script.manhtuong.net/checkserverresource
+			chmod 777 checkserverresource
 			kusanagi restart
 		;;
 
