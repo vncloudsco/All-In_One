@@ -1,4 +1,4 @@
-### tenten Zcom support install
+###  install all control
 Đây là công cụ hỗ trợ cài đặt ban đầu tất cả các control vps sau
 ##### CWP
 ##### Kusanagi
