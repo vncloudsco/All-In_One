@@ -24,6 +24,7 @@ show_menus() {
 	echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 	echo "1. Fix Kusanagi Resource Monitor Error"
 	echo "2. Fix Kusanagi An error occurred"
+	echo "3. Thoat"
 
 }
 
