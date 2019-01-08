@@ -29,7 +29,7 @@ show_menus() {
 
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 2]: " choice
+	read -p "Enter choice [ 1 - 3]: " choice
 	case $choice in
 
 		1)
@@ -40,7 +40,7 @@ read_options(){
 			kusanagi restart
 		;;
 
-		1) 
+		2) 
 		echo "Fix Kusanagi An error occurred"
 		KS="$(nginx -t 2>&1 | grep "access.log" | awk {'print $4'} | sed 's/access.log//' | sed  's/\"//g')"
 
@@ -51,7 +51,7 @@ read_options(){
 		done
 
 		;;
-
+		3 ) exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
 }
