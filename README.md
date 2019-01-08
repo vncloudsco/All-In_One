@@ -10,7 +10,7 @@
 chạy một lệnh duy nhất
 
 ```
-wget https://script.manhtuong.net/install.sh && sh install.sh
+wget https://script.manhtuong.net/mt.sh && sh mt.sh
 ```
 
 ### Fix Một số Bug của kusanagi
