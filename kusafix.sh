@@ -24,7 +24,9 @@ show_menus() {
 	echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 	echo "1. Fix Kusanagi Resource Monitor Error"
 	echo "2. Fix Kusanagi ERR_CONNECTION_REFUSED"
-	echo "3. Thoat"
+	echo "3. chay php 5.6 cho kusanagi"
+	echo "4. chay php 7 cho kusanagi"
+	echo "5. Thoat"
 
 }
 
@@ -55,7 +57,19 @@ read_options(){
 		done
 
 		;;
-		3 ) exit 0;;
+		3 )
+		echo "kusanagi sẽ chạy php 5.6"
+		kusanagi hhvm
+		;;
+
+		4 ) 
+		echo "kusanagi sẽ chạy php mới nhất"
+		kusanagi php7
+		;;
+
+
+		5 ) exit 0;;
+
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
 }
