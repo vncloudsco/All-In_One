@@ -18,6 +18,7 @@ wget https://script.manhtuong.net/mt.sh && sh mt.sh
 ### Fix Một số Bug của kusanagi
 ##### Kusanagi Resource Monitor Error
 ##### Kusanagi An error occurred
+##### Chọn Phiên Bản PHP Cho Kusanagi
 
 ``` wget https://script.manhtuong.net/kusafix.sh && sh kusafix.sh ```
 
