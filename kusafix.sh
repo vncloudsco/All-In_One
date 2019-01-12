@@ -53,7 +53,7 @@ read_options(){
 				cd $D
 				touch access.log
 				service nginx restart
-				chown -R Kusanagi:Kusanagi $D
+				chown -R kusanagi:kusanagi $D
 		done
 
 		;;
