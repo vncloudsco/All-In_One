@@ -77,10 +77,7 @@ read_options(){
 
 		;;
 
-
-
-
-		4 ) exit 0;;
+		8 ) exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
 }
