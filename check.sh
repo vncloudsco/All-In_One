@@ -29,7 +29,8 @@ show_menus() {
 	echo "5. Tu Dong Khoi Dong Lai services khi bi dung danh cho iRedMail."
 	echo "6. Renew SSL Let's Encrypt for Zimbra Virtualhost."
 	echo "7. Chan IP."
-	echo "8. Thoat."
+	echo "8. Quet Ma Doc."
+	echo "9. Thoat."
 }
 
 read_options(){
@@ -78,7 +79,13 @@ read_options(){
 
 		;;
 
-		8 ) exit 0;;
+		8 ) 
+			maldet -b --scan-all
+			grep "{scan}" /usr/local/maldetect/event_log
+
+		;;
+		
+		9 ) exit 0;;
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
 }
