@@ -29,11 +29,12 @@ show_menus() {
 	echo "5. Tu Dong Khoi Dong Lai services khi bi dung danh cho iRedMail."
 	echo "6. Renew SSL Let's Encrypt for Zimbra Virtualhost."
 	echo "7. Chan IP."
+	echo "8. Thoat."
 }
 
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 3]: " choice
+	read -p "Enter choice [ 1 - 8]: " choice
 	case $choice in
 
 		1)
