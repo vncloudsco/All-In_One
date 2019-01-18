@@ -26,13 +26,14 @@ show_menus() {
 	echo "2. Fix Kusanagi ERR_CONNECTION_REFUSED"
 	echo "3. chay php 5.6 cho kusanagi"
 	echo "4. chay php 7 cho kusanagi"
-	echo "5. Thoat"
+	echo "5: Fix Kusanagi An error occurred"
+	echo "6. Thoat"
 
 }
 
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 5]: " choice
+	read -p "Enter choice [ 1 - 6]: " choice
 	case $choice in
 
 		1)
@@ -67,8 +68,10 @@ read_options(){
 		kusanagi php7
 		;;
 
-
-		5 ) exit 0;;
+		5 ) 
+			service php-fpm start
+			;;
+		6 ) exit 0;;
 
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
