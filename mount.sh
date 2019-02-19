@@ -26,7 +26,7 @@ do
 			mkdir -p $MOUNTPOINT
 			mount $PART  $MOUNTPOINT
 			rsync -avzh /home/ $MOUNTPOINT
-			# rm -rf /home/*
+			rm -rf /home/*
 			umount $MOUNTPOINT
 			rm -rf $MOUNTPOINT
 			mount $PART /home
