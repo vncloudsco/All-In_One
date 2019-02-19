@@ -3,6 +3,16 @@
 # Dinh dang mac dinh cua phan vung moi
 
 FORMAT='ext4'
+echo "Nhap Thu Muc Can Mout O Cung Dang /thumuc1/thumuc2"
+read kickoff
+
+if [ -d "$kickoff" ] 
+then
+    echo "du lieu se duoc mou vao thu muc $kickoff." 
+else
+    echo "sai thu muc khong the mout duoc o cung vui long chay lai"
+    exit 1
+fi
 
 ## Liet ke danh sach disk chua duoc phan vung
 disks=`parted -l 2>&1 > /dev/null | awk -F ':' {'print $2'} | grep -Ev '[0-9]$|Warning|Read-only'`
@@ -26,13 +36,13 @@ do
 			mkdir -p $MOUNTPOINT
 			mount $PART  $MOUNTPOINT
 			rsync -avzh /home/ $MOUNTPOINT
-			rm -rf /home/*
+			rm -rf $kickoff/*
 			umount $MOUNTPOINT
 			rm -rf $MOUNTPOINT
-			mount $PART /home
-			echo "$PART /home $FORMAT defaults 0 1" >> /etc/fstab
+			mount $PART $kickoff
+			echo "$PART $kickoff $FORMAT defaults 0 1" >> /etc/fstab
 		done
 done
 
 ## Destroy disk
-### wipefs -a /dev/vd
+### wipefs -a /dev/v
