@@ -9,6 +9,7 @@
 ##### easyengine v4
 ##### Vpssim
 ##### hocvps
+##### Zimbra
 chạy một lệnh duy nhất
 
 ```
