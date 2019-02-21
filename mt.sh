@@ -32,13 +32,14 @@ if [ "$Unbuntu" = "Ubuntu"]; then
 		echo "He Dieu Hanh Unbuntu Chi Ho Tro Cac Phan Mem Duoi Day"
 		echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 		echo "1. Cài Dat easyengine v3"
-		qecho "2. Cai Dat easyengine v4"
-		echo "3. Thoat"
+		echo "2. Cai Dat easyengine v4"
+		echo "3. Cai Dat Zimbra"
+		echo "4. thoat"
 	}
 
 	read_options(){
 		local choice
-		read -p "Enter choice [ 1 - 7]: " choice
+		read -p "Enter choice [ 1 - 4]: " choice
 		case $choice in
 
 			1 ) 
@@ -55,7 +56,14 @@ if [ "$Unbuntu" = "Ubuntu"]; then
 				wget script.manhtuong.net/menu.sh
 				mv menu.sh /usr/sbin/tt
 			;;
-			3 ) exit 0;;
+			3 ) 
+			echo "tien hanh cai dat zimbra"
+			wget https://script.manhtuong.net/zimbra-install.sh
+			chomd +x zimbra-install.sh
+			./zimbra-install.sh
+			rm -f zimbra-install.sh
+			;;
+			4 ) exit 0;;
 
 				*) echo -e "${RED}Error...${STD}" && sleep 2
 		esac
@@ -104,7 +112,8 @@ else
 		echo "5. Cai Dat Directadmin"
 		echo "6: Cai Dat Vpssim"
 		echo "7: Cai Dat Hocvps script"
-		echo "8. Thoat"
+		echo "8. cai dat zimbra"
+		echo "thoat"
 	}	
 
 	read_options(){
@@ -241,8 +250,15 @@ else
 			curl -sO https://hocvps.com/install && bash install
 
 			;;
+		8 ) 
+			echo "tien hanh cai dat zimbra"
+			wget https://script.manhtuong.net/zimbra-install.sh
+			chomd +x zimbra-install.sh
+			./zimbra-install.sh
+			rm -f zimbra-install.sh
+			;;
 		
-		8 ) exit 0;;
+		9 ) exit 0;;
 
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
