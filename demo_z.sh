@@ -198,6 +198,7 @@ y
 y
 y
 y
+y
 EOF
 if [[ $OSVER == "Ubuntu16" ]]; then
     echo "Downloading Zimbra Collaboration 8.7.11 for Ubuntu 16"
