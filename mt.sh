@@ -113,12 +113,12 @@ else
 		echo "6: Cai Dat Vpssim"
 		echo "7: Cai Dat Hocvps script"
 		echo "8. cai dat zimbra"
-		echo "thoat"
+		echo "9. thoat"
 	}	
 
 	read_options(){
 		local choice
-		read -p "Enter choice [ 1 - 6]: " choice
+		read -p "Enter choice [ 1 - 9]: " choice
 		case $choice in
 		1 ) 
 			curl -O http://vestacp.com/pub/vst-install.sh
