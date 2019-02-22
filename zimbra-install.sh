@@ -225,8 +225,9 @@ cd /tmp/zcs/zcs-* && ./install.sh -s < /tmp/zcs/installZimbra-keystrokes
 echo "Installing Zimbra Collaboration injecting the configuration"
 /opt/zimbra/libexec/zmsetup.pl -c /tmp/zcs/installZimbraScript
 su - zimbra -c 'zmcontrol restart'
-echo "You can access now to your Zimbra Collaboration Server"
+echo "Ban Co The Dung Thong Tin Sau De Dang Nhap"
 echo "Admin Console: https://"$PUBIP":7071"
 echo "Username: admin@$1"
 echo "Password: $ADMINPASS"
 echo "Web Client: https://"$PUBI
+read -n 1 -s -r -p "Nhan Enter De Tiep Tuc"
