@@ -3,7 +3,7 @@
 # check os
 Unbuntu="$(awk -F= '/^NAME/{print $2}' /etc/os-release | sed 's/\"//g')"
 
-if [ "$Unbuntu" = "Ubuntu"]; then
+if [ -f /etc/lsb-release ]; then
 	echo "Ban Dang Su Dung He Dieu Hanh Unbuntu"
 	echo "He Dieu Hanh Unbuntu Chi Ho Tro Cac Phan Mem Duoi Day"
 
@@ -79,7 +79,7 @@ if [ "$Unbuntu" = "Ubuntu"]; then
 	 done
 # rm -rf install.sh
 
-else
+elif [ -f /etc/redhat-release ]; then
 
 
 	RED='\033[0;41;30m'
@@ -268,6 +268,7 @@ else
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
 }
+
  
 trap '' SIGINT SIGQUIT SIGTSTP
  
