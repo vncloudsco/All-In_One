@@ -1,15 +1,16 @@
 ###  install all control
 Đây là công cụ hỗ trợ cài đặt ban đầu tất cả các control vps sau
-##### CWP
-##### Kusanagi
-##### DA
-##### Cpanel
-##### Vestacp
-##### easyengine v3
-##### easyengine v4
-##### Vpssim
-##### hocvps
-##### Zimbra
+##### Cài Đặt CWP
+##### Cài Đặt Kusanagi
+##### Cài Đặt DA
+##### Cài Đặt Cpanel
+##### Cài Đặt Vestacp
+##### Cài Đặt easyengine v3
+##### Cài Đặt easyengine v4
+##### Cài Đặt Vpssim
+##### Cài Đặt hocvps
+##### Cài Đặt Zimbra
+##### Cài Đặt Zabbix Và Grafana
 chạy một lệnh duy nhất
 
 ```

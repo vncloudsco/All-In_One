@@ -34,7 +34,7 @@ if [ "$Unbuntu" = "Ubuntu"]; then
 		echo "1. Cài Dat easyengine v3"
 		echo "2. Cai Dat easyengine v4"
 		echo "3. Cai Dat Zimbra"
-		echo "4. thoat"
+		echo "5. thoat"
 	}
 
 	read_options(){
@@ -113,12 +113,13 @@ else
 		echo "6: Cai Dat Vpssim"
 		echo "7: Cai Dat Hocvps script"
 		echo "8. cai dat zimbra"
-		echo "9. thoat"
+		echo "9. Cai Dat Zabbix and Grafana"
+		echo "10. thoat"
 	}	
 
 	read_options(){
 		local choice
-		read -p "Enter choice [ 1 - 9]: " choice
+		read -p "Enter choice [ 1 - 10]: " choice
 		case $choice in
 		1 ) 
 			curl -O http://vestacp.com/pub/vst-install.sh
@@ -258,7 +259,11 @@ else
 			rm -f zimbra-install.sh
 			;;
 		
-		9 ) exit 0;;
+		9 ) 
+		yum install git -y
+		git clone https://github.com/vncloudsco/zabbix-granfana && cd zabbix-granfana && bash scripts/zabbix-server.sh init
+		;;
+		10 ) exit 0;;
 
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
