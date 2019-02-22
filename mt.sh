@@ -113,7 +113,7 @@ else
 		echo "6: Cai Dat Vpssim"
 		echo "7: Cai Dat Hocvps script"
 		echo "8. cai dat zimbra"
-		echo "9. Cai Dat Zabbix and Grafana"
+		echo "9. Cai Dat Zabbix and Grafana Server"
 		echo "10. thoat"
 	}	
 
