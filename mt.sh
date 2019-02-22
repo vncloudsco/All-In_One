@@ -114,7 +114,8 @@ elif [ -f /etc/redhat-release ]; then
 		echo "7: Cai Dat Hocvps script"
 		echo "8. cai dat zimbra"
 		echo "9. Cai Dat Zabbix and Grafana Server"
-		echo "10. thoat"
+		echo "10. Cai Dat Zabbix Agent"
+		echo "11. thoat"
 	}	
 
 	read_options(){
@@ -263,7 +264,13 @@ elif [ -f /etc/redhat-release ]; then
 		yum install git -y
 		git clone https://github.com/vncloudsco/zabbix-granfana && cd zabbix-granfana && bash scripts/zabbix-server.sh init
 		;;
-		10 ) exit 0;;
+		
+		10 ) 
+		wget https://script.manhtuong.net/Zabbix_Agent/install.sh
+		sh install.sh
+		rm -f install.sh
+		;;
+		11 ) exit 0;;
 
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
