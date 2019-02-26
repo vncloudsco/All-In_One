@@ -18,6 +18,14 @@ chạy một lệnh duy nhất
 wget https://script.manhtuong.net/mt.sh && sh mt.sh
 ```
 
+### Support Install Openvpn On Centos
+Support install openvpn on centos 6 and centos 7
+
+```
+wget https://script.manhtuong.net/openvpn/install.sh && sh install.sh
+```
+
+### Fix Bug
 ### Fix Một số Bug của kusanagi
 ##### Kusanagi Resource Monitor Error
 ##### Fix Kusanagi ERR_CONNECTION_REFUSED
