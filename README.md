@@ -19,7 +19,7 @@ wget https://script.manhtuong.net/mt.sh && sh mt.sh
 ```
 
 ### Support Install Openvpn On Centos
-Support install openvpn on centos 6 and centos 7
+Support install openvpn on centos 6, 7 Unbuntu 18, 16, 14
 
 ```
 wget https://script.manhtuong.net/openvpn/install.sh && sh install.sh
