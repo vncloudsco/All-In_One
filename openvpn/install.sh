@@ -13,9 +13,6 @@ echo "Admin Dang Nhap https://$IP:943/admin" >> /etc/motd
 echo "Dang Nhap https://$IP:943/" >> /etc/motd
 echo "Tai Khoan Dang Nhap la: openvpn" >> /etc/motd
 echo "mat khau dang nhap la: $PASD" >> /etc/motd
-
-
-
 echo "Admin Dang Nhap https://$IP:943/admin"
 echo "Dang Nhap https://$IP:943/"
 echo "Tai Khoan Dang Nhap la: openvpn"
