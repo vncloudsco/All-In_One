@@ -10,4 +10,5 @@ echo "openvpn:$PASD" | chpasswd
 clear
 echo "Admin Dang Nhap https://$IP:943/admin"
 echo "Dang Nhap https://$IP:943/"
-echo "mat khau dang nhap la $PASD"
+echo "Tai Khoan Dang Nhap la: openvpn"
+echo "mat khau dang nhap la: $PASD"
