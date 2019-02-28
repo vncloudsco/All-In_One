@@ -1,131 +1,59 @@
-#!bin/bash
+#!/bin/bash
 
-UUID="$(id -u)"
-PASD="$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 10 | head -n 1)"
-IP="$(curl ifconfig.me)"
+	RED='\033[0;41;30m'
+	STD='\033[0;0;39m'
+ 
+		pause(){
+ 			 read -p "Press [Enter] key to continue..." fackEnterKey
+		}
 
-# cau hinh cho centos
-
-if [ -f /etc/redhat-release ]; then
-	IDD="$(uname -m)"
-	if [[ "$IDD" = "x86_64" ]]; then
-
-		VS="$(rpm --eval '%{centos_ver}')"
-		yum update -y
-		wget https://openvpn.net/downloads/openvpn-as-latest-CentOS$VS.x86_64.rpm
-		yum localinstall openvpn-as-2.0.26-CentOS$VS.x86_64.rpm -y
-		echo "openvpn:$PASD" | chpasswd
+	one(){
+		echo "one() called"
+        pause
+	}
+ 
+	two(){
+		echo "two() called"
+        	pause
+	}
+ 
+	show_menus() {
 		clear
-		echo "ban dang dung Openvpn day la thong tin dang nhap" >> /etc/motd
-		echo "Admin Dang Nhap https://$IP:943/admin" >> /etc/motd
-		echo "Dang Nhap https://$IP:943/" >> /etc/motd
-		echo "Tai Khoan Dang Nhap la: openvpn" >> /etc/motd
-		echo "mat khau dang nhap la: $PASD" >> /etc/motd
-		echo "Admin Dang Nhap https://$IP:943/admin"
-		echo "Dang Nhap https://$IP:943/"
-		echo "Tai Khoan Dang Nhap la: openvpn"
-		echo "mat khau dang nhap la: $PASD"
+		echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"	
+		echo " OpenVpn Script Install On VPS  "
+		echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+		echo "1. Cai Dat Openvpn Gui"
+		echo "2. Cai Dat Openvpn Not Gui"
+		echo "3. Exit"
 
-	elif [[ "$IDD" = "i686" ]]; then
+	}
 
-		VS="$(rpm --eval '%{centos_ver}')"
-		yum update -y
-		wget https://openvpn.net/downloads/openvpn-as-latest-CentOS6.i386.rpm
-		yum localinstall openvpn-as-latest-CentOS6.i386.rpm -y
-		echo "openvpn:$PASD" | chpasswd
-		clear
-		echo "ban dang dung Openvpn day la thong tin dang nhap" >> /etc/motd
-		echo "Admin Dang Nhap https://$IP:943/admin" >> /etc/motd
-		echo "Dang Nhap https://$IP:943/" >> /etc/motd
-		echo "Tai Khoan Dang Nhap la: openvpn" >> /etc/motd
-		echo "mat khau dang nhap la: $PASD" >> /etc/motd
-		echo "Admin Dang Nhap https://$IP:943/admin"
-		echo "Dang Nhap https://$IP:943/"
-		echo "Tai Khoan Dang Nhap la: openvpn"
-		echo "mat khau dang nhap la: $PASD"
-	fi
-# cau hinh cho unbuntu
+	read_options(){
+		local choice
+		read -p "Enter choice [ 1 - 4]: " choice
+		case $choice in
 
-elif [ -f /etc/lsb-release ]; then
-VID="$(lsb_release -crid | grep Release | awk {'print $2'})"
-	if [ "$VID" = "18.04" ]; then
-		wget https://openvpn.net/downloads/openvpn-as-latest-ubuntu18.amd_64.deb
-		dpkg -i openvpn-as-latest-ubuntu18.amd_64.deb
-		echo "openvpn:$PASD" | chpasswd
-		clear
-		echo "ban dang dung Openvpn day la thong tin dang nhap" >> /etc/motd
-		echo "Admin Dang Nhap https://$IP:943/admin" >> /etc/motd
-		echo "Dang Nhap https://$IP:943/" >> /etc/motd
-		echo "Tai Khoan Dang Nhap la: openvpn" >> /etc/motd
-		echo "mat khau dang nhap la: $PASD" >> /etc/motd
-		echo "Admin Dang Nhap https://$IP:943/admin"
-		echo "Dang Nhap https://$IP:943/"
-		echo "Tai Khoan Dang Nhap la: openvpn"
-		echo "mat khau dang nhap la: $PASD"
-	elif [ "$VID" = "16.04" ]; then
-		IDS="$(uname -i)"
-		if [[ "$IDS" = "x86_64" ]]; then
-			wget https://openvpn.net/downloads/openvpn-as-latest-ubuntu16.amd_64.deb
-			dpkg -i openvpn-as-latest-ubuntu18.amd_64.deb
-			echo "openvpn:$PASD" | chpasswd
-			clear
-			echo "ban dang dung Openvpn day la thong tin dang nhap" >> /etc/motd
-			echo "Admin Dang Nhap https://$IP:943/admin" >> /etc/motd
-			echo "Dang Nhap https://$IP:943/" >> /etc/motd
-			echo "Tai Khoan Dang Nhap la: openvpn" >> /etc/motd
-			echo "mat khau dang nhap la: $PASD" >> /etc/motd
-			echo "Admin Dang Nhap https://$IP:943/admin"
-			echo "Dang Nhap https://$IP:943/"
-			echo "Tai Khoan Dang Nhap la: openvpn"
-			echo "mat khau dang nhap la: $PASD"
+			1 ) 
+				echo "Chuan Bi Cai Dat Openvpn Gui"
+					wget https://script.manhtuong.net/openvpn/openvpn_gui.sh && sh openvpn_gui.sh
+				;;
 
-		elif [ "$IDS" = "i686" ]; then
-			wget https://openvpn.net/downloads/openvpn-as-latest-ubuntu16.i386.deb
-			dpkg -i openvpn-as-latest-ubuntu16.i386.deb
-			echo "openvpn:$PASD" | chpasswd
-			clear
-			echo "ban dang dung Openvpn day la thong tin dang nhap" >> /etc/motd
-			echo "Admin Dang Nhap https://$IP:943/admin" >> /etc/motd
-			echo "Dang Nhap https://$IP:943/" >> /etc/motd
-			echo "Tai Khoan Dang Nhap la: openvpn" >> /etc/motd
-			echo "mat khau dang nhap la: $PASD" >> /etc/motd
-			echo "Admin Dang Nhap https://$IP:943/admin"
-			echo "Dang Nhap https://$IP:943/"
-			echo "Tai Khoan Dang Nhap la: openvpn"
-			echo "mat khau dang nhap la: $PASD"
-		fi
-	elif [ "$VID" = "14.04" ]; then
-		IDS="$(uname -i)"
-		if [[ "$IDS" = "x86_64" ]]; then
-			wget https://openvpn.net/downloads/openvpn-as-latest-ubuntu14.amd_64.deb
-			dpkg -i openvpn-as-latest-ubuntu14.amd_64.deb
-			echo "openvpn:$PASD" | chpasswd
-			clear
-			echo "ban dang dung Openvpn day la thong tin dang nhap" >> /etc/motd
-			echo "Admin Dang Nhap https://$IP:943/admin" >> /etc/motd
-			echo "Dang Nhap https://$IP:943/" >> /etc/motd
-			echo "Tai Khoan Dang Nhap la: openvpn" >> /etc/motd
-			echo "mat khau dang nhap la: $PASD" >> /etc/motd
-			echo "Admin Dang Nhap https://$IP:943/admin"
-			echo "Dang Nhap https://$IP:943/"
-			echo "Tai Khoan Dang Nhap la: openvpn"
-			echo "mat khau dang nhap la: $PASD"
+			2 ) 
+				echo "Hien Tai Chung Toi Chua Ho Tro Tinh Nang Nay"
+				echo "vui long chon lai"
+			;;
 
-		elif [ "$IDS" = "i686" ]; then
-			wget https://openvpn.net/downloads/openvpn-as-latest-ubuntu14.i386.deb
-			dpkg -i openvpn-as-latest-ubuntu14.i386.deb
-			echo "openvpn:$PASD" | chpasswd
-			clear
-			echo "ban dang dung Openvpn day la thong tin dang nhap" >> /etc/motd
-			echo "Admin Dang Nhap https://$IP:943/admin" >> /etc/motd
-			echo "Dang Nhap https://$IP:943/" >> /etc/motd
-			echo "Tai Khoan Dang Nhap la: openvpn" >> /etc/motd
-			echo "mat khau dang nhap la: $PASD" >> /etc/motd
-			echo "Admin Dang Nhap https://$IP:943/admin"
-			echo "Dang Nhap https://$IP:943/"
-			echo "Tai Khoan Dang Nhap la: openvpn"
-			echo "mat khau dang nhap la: $PASD"
-		fi
-	fi
+			3 ) exit 0;;
 
-fi
+				*) echo -e "${RED}Error...${STD}" && sleep 2
+		esac
+	}
+ 
+		trap '' SIGINT SIGQUIT SIGTSTP
+ 
+	 while true
+	 do
+ 
+		show_menus
+	 	read_options
+	 done
