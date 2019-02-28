@@ -48,9 +48,9 @@ if [ -f /etc/redhat-release ]; then
 
 elif [ -f /etc/lsb-release ]; then
 VID="$(lsb_release -crid | grep Release | awk {'print $2'})"
-	if [[ "$VID" = "18.04" ]]; then
+	if [ "$VID" = "18.04" ]; then
 		wget https://openvpn.net/downloads/openvpn-as-latest-ubuntu18.amd_64.deb
-		dpkg -i openvpn-as-latest-ubuntu18.amd_64.deb -y
+		dpkg -i openvpn-as-latest-ubuntu18.amd_64.deb
 		echo "openvpn:$PASD" | chpasswd
 		clear
 		echo "ban dang dung Openvpn day la thong tin dang nhap" >> /etc/motd
@@ -62,11 +62,11 @@ VID="$(lsb_release -crid | grep Release | awk {'print $2'})"
 		echo "Dang Nhap https://$IP:943/"
 		echo "Tai Khoan Dang Nhap la: openvpn"
 		echo "mat khau dang nhap la: $PASD"
-	elif [[ "$VID" = "16.04" ]]; then
+	elif [ "$VID" = "16.04" ]; then
 		IDS="$(uname -i)"
 		if [[ "$IDS" = "x86_64" ]]; then
 			wget https://openvpn.net/downloads/openvpn-as-latest-ubuntu16.amd_64.deb
-			dpkg -i openvpn-as-latest-ubuntu18.amd_64.deb -y
+			dpkg -i openvpn-as-latest-ubuntu18.amd_64.deb
 			echo "openvpn:$PASD" | chpasswd
 			clear
 			echo "ban dang dung Openvpn day la thong tin dang nhap" >> /etc/motd
@@ -79,9 +79,9 @@ VID="$(lsb_release -crid | grep Release | awk {'print $2'})"
 			echo "Tai Khoan Dang Nhap la: openvpn"
 			echo "mat khau dang nhap la: $PASD"
 
-		elif [[ "$IDS" = "i686" ]]; then
+		elif [ "$IDS" = "i686" ]; then
 			wget https://openvpn.net/downloads/openvpn-as-latest-ubuntu16.i386.deb
-			dpkg -i openvpn-as-latest-ubuntu16.i386.deb -y
+			dpkg -i openvpn-as-latest-ubuntu16.i386.deb
 			echo "openvpn:$PASD" | chpasswd
 			clear
 			echo "ban dang dung Openvpn day la thong tin dang nhap" >> /etc/motd
@@ -94,11 +94,11 @@ VID="$(lsb_release -crid | grep Release | awk {'print $2'})"
 			echo "Tai Khoan Dang Nhap la: openvpn"
 			echo "mat khau dang nhap la: $PASD"
 		fi
-	elif [[ "$VID" = "14.04" ]]; then
+	elif [ "$VID" = "14.04" ]; then
 		IDS="$(uname -i)"
 		if [[ "$IDS" = "x86_64" ]]; then
 			wget https://openvpn.net/downloads/openvpn-as-latest-ubuntu14.amd_64.deb
-			dpkg -i openvpn-as-latest-ubuntu14.amd_64.deb -y
+			dpkg -i openvpn-as-latest-ubuntu14.amd_64.deb
 			echo "openvpn:$PASD" | chpasswd
 			clear
 			echo "ban dang dung Openvpn day la thong tin dang nhap" >> /etc/motd
@@ -111,9 +111,9 @@ VID="$(lsb_release -crid | grep Release | awk {'print $2'})"
 			echo "Tai Khoan Dang Nhap la: openvpn"
 			echo "mat khau dang nhap la: $PASD"
 
-		elif [[ "$IDS" = "i686" ]]; then
+		elif [ "$IDS" = "i686" ]; then
 			wget https://openvpn.net/downloads/openvpn-as-latest-ubuntu14.i386.deb
-			dpkg -i openvpn-as-latest-ubuntu14.i386.deb -y
+			dpkg -i openvpn-as-latest-ubuntu14.i386.deb
 			echo "openvpn:$PASD" | chpasswd
 			clear
 			echo "ban dang dung Openvpn day la thong tin dang nhap" >> /etc/motd
