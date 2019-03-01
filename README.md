@@ -22,7 +22,7 @@ curl -L -o control.sh control.manhtuong.net && sh control.sh
 Support install openvpn on centos 6, 7 Unbuntu 18, 16, 14
 
 ```
-wget https://script.manhtuong.net/openvpn/install.sh && sh install.sh
+curl -L -o openvpn.sh vpn.manhtuong.net ; chmod +x openvpn.sh ; ./openvpn.sh
 ```
 
 ### Fix Bug
