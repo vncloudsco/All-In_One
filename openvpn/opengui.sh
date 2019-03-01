@@ -8,7 +8,7 @@ IP="$(curl ifconfig.me)"
 
 if [ -f /etc/redhat-release ]; then
 	IDD="$(uname -m)"
-	if [[ "$IDD" = "x86_64" ]]; then
+	if [ "$IDD" = "x86_64" ]; then
 
 		VS="$(rpm --eval '%{centos_ver}')"
 		yum update -y
@@ -26,7 +26,7 @@ if [ -f /etc/redhat-release ]; then
 		echo "Tai Khoan Dang Nhap la: openvpn"
 		echo "mat khau dang nhap la: $PASD"
 
-	elif [[ "$IDD" = "i686" ]]; then
+	elif [ "$IDD" = "i686" ]; then
 
 		VS="$(rpm --eval '%{centos_ver}')"
 		yum update -y
