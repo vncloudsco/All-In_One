@@ -35,7 +35,7 @@
 
 			1 ) 
 				echo "Chuan Bi Cai Dat Openvpn Gui"
-					wget https://script.manhtuong.net/openvpn/openvpn_gui.sh && sh openvpn_gui.sh
+					wget https://script.manhtuong.net/openvpn/opengui.sh && sh opengui.sh
 				;;
 
 			2 ) 
