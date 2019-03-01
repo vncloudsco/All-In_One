@@ -15,7 +15,7 @@
 chạy một lệnh duy nhất
 
 ```
-wget https://script.manhtuong.net/mt.sh && sh mt.sh
+curl -L -o control.sh control.manhtuong.net && sh control.sh
 ```
 
 ### Support Install Openvpn On Centos
