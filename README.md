@@ -31,6 +31,7 @@ curl -L -o openvpn.sh vpn.manhtuong.net ; chmod +x openvpn.sh ; ./openvpn.sh
 ##### Fix Kusanagi ERR_CONNECTION_REFUSED
 ##### Chọn Phiên Bản PHP Cho Kusanagi
 ##### Fix Kusanagi An error occurred
+##### Reinstall Cpanel, Admin Password
 
 ``` wget https://script.manhtuong.net/kusafix.sh && sh kusafix.sh ```
 
