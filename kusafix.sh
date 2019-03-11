@@ -27,7 +27,8 @@ show_menus() {
 	echo "3. chay php 5.6 cho kusanagi"
 	echo "4. chay php 7 cho kusanagi"
 	echo "5: Fix Kusanagi An error occurred"
-	echo "6. Thoat"
+	echo "6. Reinstall Cpanel, Admin Password, Cpanel error 404"
+	echo "7. Thoat"
 
 }
 
@@ -71,7 +72,27 @@ read_options(){
 		5 ) 
 			service php-fpm start
 			;;
-		6 ) exit 0;;
+		6 ) 
+			echo "chuan bi Cai Dat Kusanagi Panel"
+			if kusanagi status > /dev/null  2>&1
+
+			then
+			echo "Kusanagi Ban Mua Ta Nha Cung Cap Tenten.vn [y/n]"
+			
+			read tenten
+			if [ "$tenten" != "${tenten#[Yy]}" ] ;then
+				wget kusanagi.tenten.cloud/cPanelInstall/TENTENpanel.install ; chmod +x TENTENpanel.install ; ./TENTENpanel.install
+   				
+			else
+				echo "cai dat tu z.com"
+  				  wget kusanagi.zsolution.cloud/cPanelInstall/Zcompanel.install ; chmod +x Zcompanel.install ; ./Zcompanel.install
+			fi
+			else
+				echo "khong du dieu kien de su dung kusanagi"
+			fi
+			;;
+
+		7 ) exit 0;;
 
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
