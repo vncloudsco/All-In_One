@@ -77,7 +77,7 @@ read_options(){
 			if [ -f TENTENpanel.install ]; then
 					./TENTENpanel.install
 
-			elif [[ -f Zcompanel.install ]]; then
+			elif [ -f Zcompanel.install ]; then
 					./Zcompanel.install
 			else
 				echo "Khong The Cai Dat Lai Vui Long Lien He kythuat@tenten.vn"
