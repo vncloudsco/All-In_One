@@ -16,7 +16,7 @@ read gw
 echo "nhap vao IP Subnet Mask"
 read subm
 
-echo "Nhap Vao IP"
+echo "Nhap Vao IP Moi IP Cach Nhau Bang Dau Cach IP1 IP2 ...."
 read IP
 echo "$IP" > zcomip.sh
 tr -s ' '  '\n' <zcomip.sh> 23.sh
