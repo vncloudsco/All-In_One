@@ -73,22 +73,15 @@ read_options(){
 			service php-fpm start
 			;;
 		6 ) 
-			echo "chuan bi Cai Dat Kusanagi Panel"
-			if kusanagi status > /dev/null  2>&1
+			echo "chuan bi Cai Dat Lai Kusanagi Panel"
+			if [ -f TENTENpanel.install ]; then
+					./TENTENpanel.install
 
-			then
-			echo "Kusanagi Ban Mua Ta Nha Cung Cap Tenten.vn [y/n]"
-			
-			read tenten
-			if [ "$tenten" != "${tenten#[Yy]}" ] ;then
-				wget kusanagi.tenten.cloud/cPanelInstall/TENTENpanel.install ; chmod +x TENTENpanel.install ; ./TENTENpanel.install
-   				
+			elif [[ -f Zcompanel.install ]]; then
+					./Zcompanel.install
 			else
-				echo "cai dat tu z.com"
-  				  wget kusanagi.zsolution.cloud/cPanelInstall/Zcompanel.install ; chmod +x Zcompanel.install ; ./Zcompanel.install
-			fi
-			else
-				echo "khong du dieu kien de su dung kusanagi"
+				echo "Khong The Cai Dat Lai Vui Long Lien He kythuat@tenten.vn"
+
 			fi
 			;;
 
