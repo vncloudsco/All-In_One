@@ -33,7 +33,9 @@ curl -L -o openvpn.sh vpn.manhtuong.net ; chmod +x openvpn.sh ; ./openvpn.sh
 ##### Fix Kusanagi An error occurred
 ##### Reinstall Cpanel, Admin Password
 
-``` wget https://script.manhtuong.net/kusafix.sh && sh kusafix.sh ```
+``` 
+wget https://script.manhtuong.net/kusafix.sh && sh kusafix.sh
+```
 
 ### Hỗ Trợ Cài Đặt Một Số Phần Mở Rộng Cho vps
 
