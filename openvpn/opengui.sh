@@ -50,7 +50,7 @@ elif [ -f /etc/lsb-release ]; then
 VID="$(lsb_release -crid | grep Release | awk {'print $2'})"
 	if [ "$VID" = "18.04" ]; then
 		wget https://openvpn.net/downloads/openvpn-as-latest-ubuntu18.amd_64.deb
-		dpkg -i openvpn-as-latest-ubuntu18.amd_64.deb
+		sudo dpkg -i openvpn-as-latest-ubuntu18.amd_64.deb
 		echo "openvpn:$PASD" | chpasswd
 		clear
 		echo "ban dang dung Openvpn day la thong tin dang nhap" >> /etc/motd
@@ -66,7 +66,7 @@ VID="$(lsb_release -crid | grep Release | awk {'print $2'})"
 		IDS="$(uname -i)"
 		if [[ "$IDS" = "x86_64" ]]; then
 			wget https://openvpn.net/downloads/openvpn-as-latest-ubuntu16.amd_64.deb
-			dpkg -i openvpn-as-latest-ubuntu18.amd_64.deb
+			sudo dpkg -i openvpn-as-latest-ubuntu18.amd_64.deb
 			echo "openvpn:$PASD" | chpasswd
 			clear
 			echo "ban dang dung Openvpn day la thong tin dang nhap" >> /etc/motd
@@ -81,7 +81,7 @@ VID="$(lsb_release -crid | grep Release | awk {'print $2'})"
 
 		elif [ "$IDS" = "i686" ]; then
 			wget https://openvpn.net/downloads/openvpn-as-latest-ubuntu16.i386.deb
-			dpkg -i openvpn-as-latest-ubuntu16.i386.deb
+			sudo dpkg -i openvpn-as-latest-ubuntu16.i386.deb
 			echo "openvpn:$PASD" | chpasswd
 			clear
 			echo "ban dang dung Openvpn day la thong tin dang nhap" >> /etc/motd
@@ -98,7 +98,7 @@ VID="$(lsb_release -crid | grep Release | awk {'print $2'})"
 		IDS="$(uname -i)"
 		if [[ "$IDS" = "x86_64" ]]; then
 			wget https://openvpn.net/downloads/openvpn-as-latest-ubuntu14.amd_64.deb
-			dpkg -i openvpn-as-latest-ubuntu14.amd_64.deb
+			sudo dpkg -i openvpn-as-latest-ubuntu14.amd_64.deb
 			echo "openvpn:$PASD" | chpasswd
 			clear
 			echo "ban dang dung Openvpn day la thong tin dang nhap" >> /etc/motd
@@ -113,7 +113,7 @@ VID="$(lsb_release -crid | grep Release | awk {'print $2'})"
 
 		elif [ "$IDS" = "i686" ]; then
 			wget https://openvpn.net/downloads/openvpn-as-latest-ubuntu14.i386.deb
-			dpkg -i openvpn-as-latest-ubuntu14.i386.deb
+			sudo dpkg -i openvpn-as-latest-ubuntu14.i386.deb
 			echo "openvpn:$PASD" | chpasswd
 			clear
 			echo "ban dang dung Openvpn day la thong tin dang nhap" >> /etc/motd
