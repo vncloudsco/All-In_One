@@ -144,3 +144,4 @@ VID="$(lsb_release -crid | grep Release | awk {'print $2'})"
 	fi
 
 fi
+read -p "Press enter to continue"
