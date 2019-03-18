@@ -9,6 +9,11 @@ IP="$(curl ifconfig.me)"
 if [ -f /etc/redhat-release ]; then
 	yum update
 	yum upgrade -y
+	killer="$(ps -ax | grep yum | awk {'print $1'})"
+	for i in $killer
+		do
+			kill -9 $i
+	done
 	IDD="$(uname -m)"
 	if [ "$IDD" = "x86_64" ]; then
 
@@ -51,6 +56,12 @@ if [ -f /etc/redhat-release ]; then
 elif [ -f /etc/lsb-release ]; then
 	apt update
 	apt upgrade -y
+
+	killer="$(ps -ax | grep apt | awk {'print $1'})"
+	for i in $killer
+		do
+			kill -9 $i
+	done
 VID="$(lsb_release -crid | grep Release | awk {'print $2'})"
 	if [ "$VID" = "18.04" ]; then
 		wget https://openvpn.net/downloads/openvpn-as-latest-ubuntu18.amd_64.deb
