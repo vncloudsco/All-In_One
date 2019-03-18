@@ -7,6 +7,8 @@ IP="$(curl ifconfig.me)"
 # cau hinh cho centos
 
 if [ -f /etc/redhat-release ]; then
+	yum update
+	yum upgrade -y
 	IDD="$(uname -m)"
 	if [ "$IDD" = "x86_64" ]; then
 
@@ -47,6 +49,8 @@ if [ -f /etc/redhat-release ]; then
 # cau hinh cho unbuntu
 
 elif [ -f /etc/lsb-release ]; then
+	apt update
+	apt upgrade -y
 VID="$(lsb_release -crid | grep Release | awk {'print $2'})"
 	if [ "$VID" = "18.04" ]; then
 		wget https://openvpn.net/downloads/openvpn-as-latest-ubuntu18.amd_64.deb
