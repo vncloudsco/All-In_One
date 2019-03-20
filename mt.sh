@@ -226,7 +226,7 @@ elif [ -f /etc/redhat-release ]; then
 			service NetworkManager stop
 			chkconfig NetworkManager off
 			PASD="$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 10 | head -n 1)"
-			hostname $PASD.manhtuong.net
+			hostname $PASD.cpanel.manhtuong.net
 			cd /home && curl -o latest -L https://securedownloads.cpanel.net/latest && sh latest
 			;;
 		5 ) 
