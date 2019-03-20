@@ -65,7 +65,7 @@ column=`pr -mT  --width=145 --page-width=145 <(echo "Những IP Address kết n�
 
 date=`TZ=Asia/Ho_Chi_Minh date +"GIỜ:%HH%M-NGÀY:%d-%m-%Y"`
 clear
-echo '########### Bảng thống kê máy chủ dành cho SYSTEM ADMIN LINUX SERVER VÕ DUY DOT COM: ########### '$date' ###########
+echo '########### Bảng thống kê máy chủ dành cho SYSTEM ADMIN LINUX SERVER MTDev: ########### '$date' ###########
 
 	Xung nhịp CPU đang dùng là: ~'$CPUdangdung'%	Lượng RAM đang dùng là: ~'$RAMdangdung'MB		Tốc độ tải IO ổ cứng đang là:	~'$IOdangdung_doc'MB/s ĐỌC
 															~'$IOdangdung_ghi'MB/s GHI 				
