@@ -51,3 +51,7 @@ wget https://script.manhtuong.net/kusafix.sh && sh kusafix.sh
 ```
 wget https://script.manhtuong.net/check.sh && sh check.sh
 ```
+Netwwork Monitor 
+```
+curl L -o /usr/bin/mtd https://script.manhtuong.net/network/mtd && chmod +x /usr/bin/mtd && mtd
+```
