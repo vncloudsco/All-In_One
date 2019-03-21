@@ -9,7 +9,7 @@ mkdir /home/vpn
 cp rmuser.sh /home/vpn/rmuser.sh
 cp lsusers.sh /home/vpn/lsusers.sh
 cp adduser.sh /home/vpn/adduser.sh
-wget https://gist.githubusercontent.com/vncloudsco/93159d58574b534b21859b010d2d2bbd/raw/ac2bc31e95c5a42afdee83fdec2c3839b201fd5b/vpn.sh
+curl -L -o vpn.sh https://l.manhtuong.net/2JtZ5YK
 chmod 700 vpn.sh
 echo "de dung menu thi go ./vpn.sh"
 read -p "Press enter to continue"
