@@ -5,6 +5,7 @@ type docker >/dev/null || curl -fsSL https://get.docker.com -o get-docker.sh && 
 git clone https://github.com/vncloudsco/docker-ipsec-vpn-server/
 cd docker-ipsec-vpn-server
 source start.sh
+vpn_function
 mkdir /home/vpn
 cp rmuser.sh /home/vpn/rmuser.sh
 cp lsusers.sh /home/vpn/lsusers.sh
