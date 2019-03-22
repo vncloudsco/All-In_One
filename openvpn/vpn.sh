@@ -1,6 +1,7 @@
 #/bin/bash
-type git >/dev/null 2>&1 || apt install git -v >/dev/null 2>&1 || yum install git -v
-type wget >/dev/null 2>&1 || apt install wget -v >/dev/null 2>&1 || yum install wget -v
+apt update -y || yum update -y
+type git >/dev/null 2>&1 || apt install git -y >/dev/null 2>&1 || yum install git -y
+type wget >/dev/null 2>&1 || apt install wget -y >/dev/null 2>&1 || yum install wget -y
 type docker >/dev/null 2>&1 || curl -fsSL https://get.docker.com -o get-docker.sh && sh get-docker.sh && systemctl start docker && systemctl enable docker
 git clone https://github.com/vncloudsco/docker-ipsec-vpn-server/
 cd docker-ipsec-vpn-server
