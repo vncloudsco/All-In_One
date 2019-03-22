@@ -55,3 +55,8 @@ wget https://script.manhtuong.net/check.sh && sh check.sh
 ```
 curl -L -o /usr/bin/mtd https://script.manhtuong.net/network/mtdev && chmod 700 /usr/bin/mtd && mtd
 ```
+#### Hỗ Trợ Cài Đặt Các CMS
+##### InvoicePlane 
+```
+curl script.manhtuong.net/cms/InvoicePlane.sh -o InvoicePlane.sh && sh InvoicePlane.sh
+```
