@@ -13,5 +13,6 @@ cp adduser.sh /home/vpn/adduser.sh
 curl -L -o vpn.sh https://l.manhtuong.net/2JtZ5YK
 chmod 700 vpn.sh
 echo "de dung menu thi go ./vpn.sh"
+cp vpn.sh /root/
 read -p "Press enter to continue"
 exit 1
