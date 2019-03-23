@@ -60,3 +60,9 @@ curl -L -o /usr/bin/mtd https://script.manhtuong.net/network/mtdev && chmod 700 
 ```
 curl script.manhtuong.net/cms/InvoicePlane.sh -o InvoicePlane.sh && sh InvoicePlane.sh
 ```
+#### Hỗ Trợ Cài Đặt Tự Động Win
+##### Tải Về Và Chạy File Bat Bằng Quyền Admin 
+Các Phần Mềm Được Cài Đặt 
+winrar, chrome, flashplayerplugin, firefox, winscp, brave, vnc-viewer, putty, directx
+
+[https://script.manhtuong.net/windows/auto_config.bat](https://script.manhtuong.net/windows/auto_config.bat)
