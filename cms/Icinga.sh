@@ -36,13 +36,22 @@ sudo systemctl enable rh-php71-php-fpm.service
 
 #Firewall rules for ICINGA
 FI () {
-sudo firewall-cmd --zone=public --permanent --add-port=80/tcp
-sudo firewall-cmd --zone=public --permanent --add-port=5665/tcp
-sudo firewall-cmd --reload
+	sudo firewall-cmd --zone=public --permanent --add-port=80/tcp
+	sudo firewall-cmd --zone=public --permanent --add-port=5665/tcp
+	sudo firewall-cmd --reload
 }
 
 IPS () {
 	#iptavles chua biet cau hinh tam thoi bo trong
+	yum install iptables-services -y
+	systemctl enable iptables
+	yum install iptables-persistent -y
+	service iptables save
+	iptables -A INPUT -p tcp -m tcp --dport 80 -j ACCEPT
+	iptables -A INPUT -p tcp -m tcp --dport 5656 -j ACCEPT
+	sudo /usr/libexec/iptables/iptables.init save
+	iptables-save | sudo tee /etc/sysconfig/iptables
+	service iptables restart
 }
 
 type firewall-cmd >/dev/null 2>&1 && FI || IPS
