@@ -1,12 +1,11 @@
 #!/bin/bash
-
+VS="$(rpm --eval '%{centos_ver}')"
 if [[ "$VS" = "7" ]]; then
 	echo "tiep tuc"
 else
 	exit 1
 fi
 yum update -y || echo " vui long dung centos de cai dat" && exit 1
-VS="$(rpm --eval '%{centos_ver}')"
 echo "Script for first-time install of SoftEther VPN on CentOS 7"
 yum -y install wget curl git nano centos-release-scl
 yum -y install devtoolset-7-gcc* devtoolset-7-binutils
