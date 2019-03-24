@@ -13,3 +13,4 @@ sed -i.bak 's/cmake/cmake3/g' configure
 cd tmp
 make || exit $?
 make install || exit $?
+echo "done"
