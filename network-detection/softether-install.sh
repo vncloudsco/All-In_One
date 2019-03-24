@@ -31,7 +31,7 @@ firewall-cmd --reload
 
 # Build SoftEther
 wget http://script.manhtuong.net/network-detection/SoftEther-build.sh
-cat se-build.sh | scl enable devtoolset-7 -
+cat SoftEther-build.sh | scl enable devtoolset-7 -
 
 systemctl daemon-reload
 systemctl enable softether-vpnserver
