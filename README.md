@@ -56,6 +56,15 @@ wget https://script.manhtuong.net/check.sh && sh check.sh
 ```
 curl -L -o /usr/bin/mtd https://script.manhtuong.net/network/mtdev && chmod 700 /usr/bin/mtd && mtd
 ```
+
+
+### Support Install VPN
+Support install VPNserver on centos 7
+
+```
+curl -L -o vpnserver.sh script.manhtuong.net/network-detection/softether-install.sh ; chmod +x vpnserver.sh ; ./vpnserver.sh
+```
+
 #### Hỗ Trợ Cài Đặt Các CMS
 ##### InvoicePlane 
 ```
