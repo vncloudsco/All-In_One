@@ -34,6 +34,7 @@ if [ -f /etc/lsb-release ]; then
 		echo "1. Cài Dat easyengine v3"
 		echo "2. Cai Dat easyengine v4"
 		echo "3. Cai Dat Zimbra"
+		echo "4. Cai Dat plesk"
 		echo "5. thoat"
 	}
 
@@ -63,7 +64,12 @@ if [ -f /etc/lsb-release ]; then
 			./zimbra-install.sh
 			rm -f zimbra-install.sh
 			;;
-			4 ) exit 0;;
+
+			4 ) 
+				sh <(curl https://autoinstall.plesk.com/one-click-installer || wget -O - https://autoinstall.plesk.com/one-click-installer)
+				;;
+
+			5 ) exit 0;;
 
 				*) echo -e "${RED}Error...${STD}" && sleep 2
 		esac
@@ -115,12 +121,13 @@ elif [ -f /etc/redhat-release ]; then
 		echo "8. cai dat zimbra"
 		echo "9. Cai Dat Zabbix and Grafana Server"
 		echo "10. Cai Dat Zabbix Agent"
-		echo "11. thoat"
+		echo "11. Cai Dat plesk"
+		echo "12. thoat"
 	}	
 
 	read_options(){
 		local choice
-		read -p "Enter choice [ 1 - 10]: " choice
+		read -p "Enter choice [ 1 - 12]: " choice
 		case $choice in
 		1 ) 
 			curl -O http://vestacp.com/pub/vst-install.sh
@@ -272,7 +279,11 @@ elif [ -f /etc/redhat-release ]; then
 		sh install.sh
 		rm -f install.sh
 		;;
-		11 ) exit 0;;
+
+		11 ) 
+			sh <(curl https://autoinstall.plesk.com/one-click-installer || wget -O - https://autoinstall.plesk.com/one-click-installer)
+			;;
+		12 ) exit 0;;
 
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac

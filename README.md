@@ -12,6 +12,7 @@
 ##### Cài Đặt Zimbra
 ##### Cài Đặt Zabbix Và Grafana
 ##### Cài Đặt Zabbix Agent
+##### Cài Đặt Plesk Linux
 chạy một lệnh duy nhất
 
 ```
