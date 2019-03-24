@@ -30,8 +30,8 @@ firewall-cmd --zone=$ZONE --add-port=40000-44999/udp --permanent
 firewall-cmd --reload
 
 # Build SoftEther
-wget http://script.manhtuong.net/network-detection/SoftEther-build.sh
-cat SoftEther-build.sh | scl enable devtoolset-7 -
+wget http://script.manhtuong.net/network-detection/softether-build.sh
+cat softether-build.sh | scl enable devtoolset-7 -
 
 systemctl daemon-reload
 systemctl enable softether-vpnserver
