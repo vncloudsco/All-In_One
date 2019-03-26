@@ -71,7 +71,7 @@ curl -L -o vpnserver.sh script.manhtuong.net/network-detection/softether-install
 curl script.manhtuong.net/cms/InvoicePlane.sh -o InvoicePlane.sh && sh InvoicePlane.sh
 ```
 
-##### Hỗ Trợ Cài Đặt Node.js
+##### Hỗ Trợ Cài Đặt Node.js Centos 6,7
 
 ```
 curl -L -o node.sh node.manhtuong.net && sh node.sh
