@@ -70,9 +70,19 @@ curl -L -o vpnserver.sh script.manhtuong.net/network-detection/softether-install
 ```
 curl script.manhtuong.net/cms/InvoicePlane.sh -o InvoicePlane.sh && sh InvoicePlane.sh
 ```
+
+##### Hỗ Trợ Cài Đặt Node.js
+
+```
+curl -L -o node.sh node.manhtuong.net && sh node.sh
+```
+
+
+
 #### Hỗ Trợ Cài Đặt Tự Động Win
 ##### Tải Về Và Chạy File Bat Bằng Quyền Admin 
 Các Phần Mềm Được Cài Đặt 
 winrar, chrome, flashplayerplugin, firefox, winscp, brave, vnc-viewer, putty, directx
 
 [https://script.manhtuong.net/windows/auto_config.bat](https://script.manhtuong.net/windows/auto_config.bat)
+
