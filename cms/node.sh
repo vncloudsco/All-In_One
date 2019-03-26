@@ -1,8 +1,5 @@
 #!/bin/sh
 # For newest Node.js version:
-#
-#   $ curl -sL install-node.now.sh | sh
-
 set -euo pipefail
 
 BOLD="$(tput bold 2>/dev/null || echo '')"
