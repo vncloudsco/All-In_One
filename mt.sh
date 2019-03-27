@@ -1,7 +1,7 @@
 #!/bin/bash
 yum update -y >/dev/null 2>&1 || apt update -y
+yum install git curl wget -y >/dev/null 2>&1 || apt install git curl wget -y
 # check os
-
 
 Unbuntu="$(awk -F= '/^NAME/{print $2}' /etc/os-release | sed 's/\"//g')"
 
