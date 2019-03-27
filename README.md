@@ -1,4 +1,4 @@
-## Diễn Đàn Hỗ TRorowh Và Xử Lý Bug: 
+## Diễn Đàn Hỗ Trợ Và Xử Lý Bug: 
 ### [https://diendan.manhtuong.net/](https://diendan.manhtuong.net/)
 
 
