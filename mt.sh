@@ -1,6 +1,8 @@
 #!/bin/bash
-
+yum update -y >/dev/null 2>&1 || apt update -y
 # check os
+
+
 Unbuntu="$(awk -F= '/^NAME/{print $2}' /etc/os-release | sed 's/\"//g')"
 
 if [ -f /etc/lsb-release ]; then
