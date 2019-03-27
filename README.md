@@ -1,3 +1,7 @@
+## Diễn Đàn Hỗ TRorowh Và Xử Lý Bug: 
+### [https://diendan.manhtuong.net/](https://diendan.manhtuong.net/)
+
+
 ###  install all control
 Đây là công cụ hỗ trợ cài đặt ban đầu tất cả các control vps sau
 ##### Cài Đặt CWP
