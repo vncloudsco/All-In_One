@@ -1,5 +1,6 @@
 #!/bin/bash
 echo "Download thanh cong bat dau cau hinh"
+echo "cap nhap he dieu hanh"
 sleep 10
 yum update -y >/dev/null 2>&1 || apt update -y
 yum install git curl wget -y >/dev/null 2>&1 || apt install git curl wget -y
