@@ -66,7 +66,7 @@ if [ -f /etc/lsb-release ]; then
 			;;
 
 			4 ) 
-				sh <(curl https://autoinstall.plesk.com/one-click-installer || wget -O - https://autoinstall.plesk.com/one-click-installer)
+				curl -L -o installer.sh https://autoinstall.plesk.com/one-click-installer && sh installer.sh
 				;;
 
 			5 ) exit 0;;
