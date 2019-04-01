@@ -145,7 +145,11 @@ elif [ -f /etc/redhat-release ]; then
 			curl -O http://vestacp.com/pub/vst-install.sh
 			echo "Dang Tien Hanh Cai Dat Vestacp"
 			echo "Nhap Hostname Dang Subdomain"
-			read hostname
+			PASD="$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 10 | head -n 1)"
+			read host
+			name="$(echo $host | grep -P '(?=^.{5,254}$)(^(?:(?!\d+\.)[a-zA-Z0-9_\-]{1,63}\.?)+(?:[a-zA-Z]{2,})$)')"
+			echo "$name" || echo "hostname nhap khong dung dinh dang he thong se dung hostname tu dong" && hostname=$PASD.manhtuong.net
+			hostname=$name
 			echo "Nhap Email"
 			read email
 			echo "Lua Chon Nginx Web service yes/no"
