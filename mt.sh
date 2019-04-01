@@ -297,7 +297,8 @@ elif [ -f /etc/redhat-release ]; then
 		;;
 
 		11 ) 
-			sh <(curl https://autoinstall.plesk.com/one-click-installer || wget -O - https://autoinstall.plesk.com/one-click-installer)
+			curl -L -o one-click-installer.sh https://autoinstall.plesk.com/one-click-installer
+			sh one-click-installer.sh
 			;;
 		12 ) exit 0;;
 
