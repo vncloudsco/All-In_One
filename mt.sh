@@ -2,13 +2,16 @@
 echo "Download thanh cong bat dau cau hinh"
 echo "cap nhap he dieu hanh"
 sleep 10
-yum update -y >/dev/null 2>&1 || apt update -y
-yum install git curl wget -y >/dev/null 2>&1 || apt install git curl wget -y
 # check os
 
 Unbuntu="$(awk -F= '/^NAME/{print $2}' /etc/os-release | sed 's/\"//g')"
 
 if [ -f /etc/lsb-release ]; then
+	echo "chung toi thay ban dang dung ubuntu"
+	echo " cong cu nay yeu cau he dieu hanh moi nhat khi su dung"
+	echo " update he thong"
+	sleep 5
+	apt update -y
 	echo "Ban Dang Su Dung He Dieu Hanh Unbuntu"
 	echo "He Dieu Hanh Unbuntu Chi Ho Tro Cac Phan Mem Duoi Day"
 
@@ -91,7 +94,11 @@ if [ -f /etc/lsb-release ]; then
 # rm -rf install.sh
 
 elif [ -f /etc/redhat-release ]; then
-
+	echo "chung toi thay ban dang dung centos"
+	echo " cong cu nay yeu cau he dieu hanh moi nhat khi su dung"
+	echo " update he thong"
+	sleep 5
+	yum update -y
 
 	RED='\033[0;41;30m'
 	STD='\033[0;0;39m'
