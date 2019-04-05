@@ -48,22 +48,14 @@ read_options(){
 
 		2) 
 		echo "Fix Kusanagi An error occurred"
-		fic() {
-		KS="$(nginx -t 2>&1 | grep "access.log" | awk {'print $4'} | sed 's/access.log//' | sed  's/\"//g')"
-		for D in $KS; do
-				mkdir -p $D
-				touch $D/access.log
-				service nginx restart
-				chown -R kusanagi:kusanagi $D
-		done
-		}
-
 			while :
 				do
-					fic
-					if [[ -z "$KS" ]]; then
+					file="$(nginx -t 2>&1 | grep "access.log" | awk {'print $4'} | sed  's/\"//g')"
+					if [[ -z "$file" ]]; then
+						service nginx restart
 						break
 					fi
+				mkdir -p "${file%/*}" && touch "$file"
 			done
 				;;
 		3 )
