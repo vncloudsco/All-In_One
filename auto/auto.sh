@@ -3,8 +3,6 @@
 # lien he tuongvi99@gmail.com
 # moi y tuong ve phan mem ban co the de xuat voi chung toi qua email hoac manhtuong.net
 
-# bo check dung luong nha con
-
 echo "Bat Dau Do Loi Tu Dong Cho Kusanagi"
 
 space_free=$(df -h | awk '{ print $5 }' | sort -n | tail -n 1 | sed 's/%//')
