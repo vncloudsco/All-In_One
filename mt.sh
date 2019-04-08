@@ -253,6 +253,8 @@ elif [ -f /etc/redhat-release ]; then
 			cd /home && curl -o latest -L https://securedownloads.cpanel.net/latest && sh latest
 			;;
 		5 ) 
+			DA="$(cat /etc/os-release | grep VERSION_ID | sed "s/VERSION_ID=//g" | sed "s/\"//g")"
+			if [ "$DA" = "7"] ;then
 			echo "Cai Dat Directadmin"
 			mkdir Directadmin
 			cd Directadmin
@@ -260,6 +262,22 @@ elif [ -f /etc/redhat-release ]; then
 			wget http://www.directadmin.com/setup.sh
 			chmod 755 setup.sh
 			./setup.sh
+			firewall-cmd --permanent --add-port=2222/tcp
+			firewall-cmd --permanent --add-port=21/tcp
+			firewall-cmd --permanent --add-port=53/tcp
+			firewall-cmd --permanent --add-port=80/tcp
+			firewall-cmd --permanent --add-port=443/tcp
+			firewall-cmd --permanent --add-port=25/tcp
+			firewall-cmd --reload
+			else
+			echo "Cai Dat Directadmin"
+			mkdir Directadmin
+			cd Directadmin
+			yum -y install wget gcc gcc-c++ flex bison make bind bind-libs bind-utils openssl openssl-devel perl quota libaio libcom_err-devel libcurl-devel gd zlib-devel zip unzip libcap-devel cronie bzip2 db4-devel cyrus-sasl-devel perl-ExtUtils-Embed autoconf automake libtool which
+			wget http://www.directadmin.com/setup.sh
+			chmod 755 setup.sh
+			./setup.sh
+			fi
 			;;
 		6 ) 
 			echo "Tien Hanh Cai Dat Vpssim Tu Nguon"
