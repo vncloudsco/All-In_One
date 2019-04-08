@@ -31,7 +31,7 @@ curl -L -o openvpn.sh vpn.manhtuong.net ; chmod +x openvpn.sh ; ./openvpn.sh
 ```
 
 ### Fix Bug
-##### Xử Lý Lỗi 500 Khi mới thêm domain trên CWP
+##### Xử Lý Lỗi 500 Khi mới thêm domain trên CWP one Hit
 ```
 wget script.manhtuong.net/auto/cwp-fix500.sh && sh cwp-fix500.sh
 ```
