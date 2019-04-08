@@ -31,6 +31,11 @@ curl -L -o openvpn.sh vpn.manhtuong.net ; chmod +x openvpn.sh ; ./openvpn.sh
 ```
 
 ### Fix Bug
+##### Xử Lý Lỗi 500 Khi mới thêm domain trên CWP
+```
+wget script.manhtuong.net/auto/cwp-fix500.sh && sh cwp-fix500.sh
+```
+
 ### Fix Một số Bug của kusanagi
 ##### Kusanagi Resource Monitor Error
 ##### Fix Kusanagi ERR_CONNECTION_REFUSED
