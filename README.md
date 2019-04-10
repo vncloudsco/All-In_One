@@ -38,9 +38,9 @@ wget script.manhtuong.net/auto/cwp-fix500.sh && sh cwp-fix500.sh
 
 ### Fix Một số Bug của kusanagi
 ##### Kusanagi Resource Monitor Error  =>>> image: [https://i.imgur.com/DzZuGd6.png](https://i.imgur.com/DzZuGd6.png)
-##### Fix Kusanagi ERR_CONNECTION_REFUSED
+##### Fix Kusanagi ERR_CONNECTION_REFUSED   =>>> image: [https://i.imgur.com/H0vLnqH.png](https://i.imgur.com/H0vLnqH.png)
 ##### Chọn Phiên Bản PHP Cho Kusanagi
-##### Fix Kusanagi An error occurred
+##### Fix Kusanagi An error occurred   =>>> image: [https://i.imgur.com/gR0nbwJ.png](https://i.imgur.com/gR0nbwJ.png)
 ##### Reinstall Cpanel, Admin Password
 
 ``` 
