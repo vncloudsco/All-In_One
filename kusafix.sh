@@ -48,15 +48,12 @@ read_options(){
 
 		2) 
 		echo "Fix Kusanagi An error occurred"
-			while :
-				do
-					file="$(nginx -t 2>&1 | grep "access.log" | awk {'print $4'} | sed  's/\"//g')"
-					if [[ -z "$file" ]]; then
-						service nginx restart
-						break
-					fi
-				mkdir -p "${file%/*}" && touch "$file"
-			done
+			mkdir /etc/auto/
+			curl -fsSL https://script.manhtuong.net/auto/kusa_nginx.sh -o /etc/auto/kusa_nginx.sh
+			crontab -l | { cat; echo "* * * * * sh /etc/auto/kusa_nginx.sh > /dev/null 2>&1"; } | crontab -
+			echo "Cong Cu Se Chay Tu Dong Sau 1 Phut"
+			read -p "Press enter to continue"
+			break
 				;;
 		3 )
 		echo "kusanagi sẽ chạy php 5.6"
