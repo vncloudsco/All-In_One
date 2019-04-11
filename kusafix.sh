@@ -74,6 +74,9 @@ read_options(){
 		6 ) 
 			curl -fsSL https://script.manhtuong.net/auto/404_kusanagi_auto.sh -o /etc/auto/404_kusanagi_auto.sh
 			crontab -l | { cat; echo "* * * * * sh /etc/auto/404_kusanagi_auto.sh"; } | crontab -
+			echo "Cong Cu Se Chay Tu Dong Sau 1 Phut"
+			read -p "Press enter to continue"
+			break
 			;;
 
 		7 ) exit 0;;
