@@ -72,6 +72,7 @@ read_options(){
 			service php-fpm start
 			;;
 		6 ) 
+			mkdir /etc/auto/
 			curl -fsSL https://script.manhtuong.net/auto/404_kusanagi_auto.sh -o /etc/auto/404_kusanagi_auto.sh
 			crontab -l | { cat; echo "* * * * * sh /etc/auto/404_kusanagi_auto.sh"; } | crontab -
 			echo "Cong Cu Se Chay Tu Dong Sau 1 Phut"
