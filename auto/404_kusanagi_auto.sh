@@ -34,7 +34,7 @@ zcom() {
 # run game
 mkdir -p /tmp/
 rm -rf /tmp/tmpfile.txt
-touch tmpfile.txt
+touch /tmp/tmpfile.txt
 crontab -l > /tmp/tmpfile.txt
 cat /tmp/tmpfile.txt | grep "404_kusanagi_auto"
 sed 's/* * * * */@reboot/g' /tmp/tmpfile.txt > /tmp/tmpfilecron.txt

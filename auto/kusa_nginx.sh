@@ -4,7 +4,7 @@
 
 mkdir -p /tmp/
 rm -rf /tmp/tmpfile.txt
-touch tmpfile.txt
+touch /tmp/tmpfile.txt
 crontab -l > /tmp/tmpfile.txt
 cat /tmp/tmpfile.txt | grep "kusa_nginx.sh"
 sed 's/* * * * */@reboot/g' /tmp/tmpfile.txt > /tmp/tmpfilecron.txt
