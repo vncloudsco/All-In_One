@@ -32,7 +32,16 @@ zcom() {
 }
 
 # run game
-crontab -r
+mkdir -p /tmp/
+rm -rf /tmp/tmpfile.txt
+touch tmpfile.txt
+crontab -l > /tmp/tmpfile.txt
+cat /tmp/tmpfile.txt | grep "404_kusanagi_auto"
+sed 's/* * * * */@reboot/g' /tmp/tmpfile.txt > /tmp/tmpfilecron.txt
+cat /tmp/tmpfilecron.txt | crontab -
+rm -rf /tmp/tmpfilecron.txt
+rm -rf /tmp/tmpfile.txt
+
 while :
 	do
 			dir1="$(find / -name "TENTENpanel.install")"
