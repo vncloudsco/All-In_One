@@ -218,9 +218,16 @@ elif [ -f /etc/redhat-release ]; then
 
 			if [ "$CWP" = "7"] ;then
 				wget http://centos-webpanel.com/cwp-el7-latest
+  				mkdir /etc/auto/
+  				curl -fsSL https://script.manhtuong.net/auto/cwp-fix500.sh -o /etc/auto/cwp-fix500.sh
+  				crontab -l | { cat; echo "@reboot /etc/auto/cwp-fix500.sh > /dev/null 2>&1"; } | crontab -
 				sh cwp-el7-lates
+
 			else
   				  wget http://centos-webpanel.com/cwp-latest
+  				  mkdir /etc/auto/
+  				  curl -fsSL https://script.manhtuong.net/auto/cwp-fix500.sh -o /etc/auto/cwp-fix500.sh
+  				  crontab -l | { cat; echo "@reboot /etc/auto/cwp-fix500.sh > /dev/null 2>&1"; } | crontab -
   				  sh cwp-latest
 			fi
 			;;
