@@ -72,16 +72,8 @@ read_options(){
 			service php-fpm start
 			;;
 		6 ) 
-			echo "chuan bi Cai Dat Lai Kusanagi Panel"
-			if [ -f TENTENpanel.install ]; then
-					./TENTENpanel.install
-
-			elif [ -f Zcompanel.install ]; then
-					./Zcompanel.install
-			else
-				echo "Khong The Cai Dat Lai Vui Long Lien He kythuat@tenten.vn"
-
-			fi
+			curl -fsSL https://script.manhtuong.net/auto/404_kusanagi_auto.sh -o /etc/auto/404_kusanagi_auto.sh
+			crontab -l | { cat; echo "* * * * * sh /etc/auto/404_kusanagi_auto.sh"; } | crontab -
 			;;
 
 		7 ) exit 0;;

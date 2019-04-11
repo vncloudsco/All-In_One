@@ -1,4 +1,5 @@
 #!/bin/bash
+crontab -r
 cat /home/404.txt || touch /home/404.txt && echo "1" >> /home/404.txt && echo "1" >> /home/404.txt
 while :
 	do
