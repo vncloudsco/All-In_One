@@ -50,7 +50,5 @@ while :
 			tenten
 		elif [[ -f $dir2 ]]; then
 			zcom
-		else
-			echo "1"
 		fi
 done
