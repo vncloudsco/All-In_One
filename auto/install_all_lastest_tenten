@@ -1,0 +1,286 @@
+#!/bin/bash
+DIR_ROOT=/usr/share/
+NGINX_CONF=http.conf
+IPA=`ifconfig eth0 | grep 'inet' | awk '{print $2}'| head -1`
+
+DB_ROOT_PASS=`cat /etc/motd | grep Pass | awk {'print $3'} | tail -n 1`
+DB_PASS=`cat /etc/motd | grep Pass | awk {'print $3'} | tail -n 1`
+G_PASS=`openssl rand -base64 32`
+
+# Kusanagi Initialization
+kusanagi init --tz Ho_Chi_Minh --lang en --keyboard en --passwd $DB_ROOT_PASS --nophrase --dbrootpass $DB_ROOT_PASS --nginx --php7
+
+# Change user group of nginx and php7 
+cd /etc/nginx/
+touch tmp_n.conf
+sed 's/user httpd www/user kusanagi kusanagi/' nginx.conf > tmp_n.conf
+cp nginx.conf nginx.conf.old
+cp tmp_n.conf nginx.conf
+rm -f tmp_n.conf
+sed -i "s|20M|128M|g" /etc/nginx/nginx.conf
+sed -i "s|16M|128M|g" /etc/php.ini
+cd /etc/php-fpm.d/
+rm -rf www.conf
+wget kusanagi.tenten.cloud/cPanelInstall/www.conf
+mkdir /var/cache/php-fpm
+chmod 755 /var/cache/php-fpm
+usermod -G nginx,www kusanagi
+cd /etc/php7-fpm.d/
+mv www.conf www.confOLD
+wget -O www.conf kusanagi.tenten.cloud/cPanelInstall/php7.2.www.conf
+#Change mysql setting
+cd /etc/my.cnf.d/
+mv server.cnf server.cnfOLD
+wget kusanagi.tenten.cloud/cPanelInstall/server.cnf
+systemctl restart mysql
+#install cPanel TENTEN
+	  cd /tmp
+       wget -O cPanel.zip kusanagi.tenten.cloud/cPanelInstall/cPanel_version1.1.zip
+       wget -O c_panel.sql kusanagi.tenten.cloud/cPanelInstall/c_panel.sql
+	   mysql -uroot -p$DB_ROOT_PASS -e "DROP DATABASE IF EXISTS c_panel"
+	   mysql -uroot -p$DB_ROOT_PASS -e "create database c_panel";
+	   mysql -uroot -p$DB_ROOT_PASS -e "grant all privileges on c_panel.* to 'cpanel_user'@'%' identified by '$DB_PASS'"
+	   mysql -uroot -p$DB_ROOT_PASS -e "flush privileges"
+	   mysql -ucpanel_user -p$DB_ROOT_PASS -h localhost c_panel  < c_panel.sql 
+	  
+	   rm -rf cPanel
+	   mkdir -p $DIR_ROOT/cPanel
+	   mv cPanel.zip $DIR_ROOT/cPanel/
+       cd $DIR_ROOT/cPanel/
+	   unzip -o cPanel.zip
+# Install phpMyAdmin
+
+cd /tmp
+if [ ! -f "config.inc.php.sample" ] ; then 
+      wget -O config.inc.php.sample kusanagi.tenten.cloud/cPanelInstall/config.inc.php.sample
+fi
+if [ ! -f "http.conf" ] ; then 
+      wget -O http.conf_newmethod kusanagi.tenten.cloud/cPanelInstall/php7.2.http.conf
+fi
+#wget kusanagi.tenten.cloud/cPanelInstall/config.inc.php.sample
+#wget -O http.conf_newmethod kusanagi.tenten.cloud/cPanelInstall/http.conf_newmethod
+cd /etc/nginx/conf.d/
+mv -f $NGINX_CONF $NGINX_CONF".origi"
+cp -f /tmp/http.conf_newmethod ./$NGINX_CONF
+mv -f _http.conf _http.conf.origi
+#cp -f /tmp/http.conf_newmethod ./_http.conf
+mv -f _ssl.conf _ssl.conf.origi
+touch /tmp/aftersed.log
+SED_CMD="sed 's/default_server/$IPA/' $NGINX_CONF > /tmp/aftersed.log"
+echo -e "$SED_CMD" | bash 
+cp -f /tmp/aftersed.log ./$NGINX_CONF
+#cp -f /tmp/aftersed.log ./_http.conf
+rm -f /tmp/aftersed.log
+
+cd /tmp
+if [ ! -f "phpMyAdmin-4.7.4-english.tar.gz" ] ; then
+     wget -O phpMyAdmin-4.7.4-english.tar.gz kusanagi.tenten.cloud/cPanelInstall/phpMyAdmin-4.7.4-english.tar.gz
+fi
+tar -xzvf phpMyAdmin-4.7.4-english.tar.gz -C /usr/share/
+cd /usr/share
+mv phpMyAdmin-4.7.4-english mysqlmanager/
+cp -f /tmp/config.inc.php.sample /usr/share/mysqlmanager/
+cd mysqlmanager/
+mv config.inc.php.sample config.inc.php
+cd ..
+chown -R kusanagi:kusanagi mysqlmanager
+
+# Install FileRun
+# change application server
+#kusanagi php7
+# create database
+rm -rf $DIR_ROOT/filerun
+wget -O Filerun_db.sql kusanagi.tenten.cloud/cPanelInstall/Filerun_db_lastest.sql
+mysql -uroot -p$DB_ROOT_PASS -e	"DROP DATABASE IF EXISTS Filerun_db"	
+mysql -uroot -p$DB_ROOT_PASS -e "create database Filerun_db"
+mysql -uroot -p$DB_ROOT_PASS -e "grant all privileges on Filerun_db.* to 'Filerun_user'@'%' identified by '$DB_PASS'"
+mysql -uroot -p$DB_ROOT_PASS -e "flush privileges"
+mysql -uroot -p$DB_ROOT_PASS -h localhost Filerun_db  < Filerun_db.sql
+# download source zip file
+cd $DIR_ROOT
+mkdir -p filerun
+cd filerun
+wget -O Filerun.zip kusanagi.tenten.cloud/cPanelInstall/Filerun.zip 
+unzip -o Filerun.zip
+#wget -O unzip.php http://f.afian.se/wl/?id=HS&filename=unzip.php&forceSave=1
+sed -i "s|100faf1c|$DB_PASS|" /usr/share/filerun/system/data/autoconfig.php
+cd ..
+chown -R kusanagi:kusanagi filerun/
+chmod -R 755 filerun/
+# install ionCube PHP Loader
+cd /tmp
+wget -O ioncube_loaders_lin_x86-64.tar.gz http://kusanagi.tenten.cloud/cPanelInstall/ioncube_loaders_lin_x86-64.tar.gz
+#wget -O ioncube_loaders_lin_x86-64.tar.gz https://downloads.ioncube.com/loader_downloads/ioncube_loaders_dar_x86-64.tar.gz
+rm -rf ioncube
+tar xvfz ioncube_loaders_lin_x86-64.tar.gz  
+cd ioncube
+#cp ioncube_loader_lin_7.0.so /usr/local/php7/lib/php/extensions/no-debug-non-zts-20151012
+cp ioncube_loader_lin_7.2.so /usr/local/php7/lib/php/extensions/no-debug-non-zts-20170718
+cp ioncube_loader_lin_5.6.so /usr/lib64/php/modules/
+cd /etc/php.d
+rm -rf 00-ioncube.ini
+touch 00-ioncube.ini
+entry="zend_extension = /usr/lib64/php/modules/ioncube_loader_lin_5.6.so"
+echo $entry > 00-ioncube.ini
+cd /etc/php7.d/extensions
+rm -rf 00-ioncube.ini
+touch 00-ioncube.ini
+entry_php7="zend_extension = /usr/local/php7/lib/php/extensions/no-debug-non-zts-20170718/ioncube_loader_lin_7.2.so"
+echo $entry_php7 > 00-ioncube.ini
+# Import Filerun_db
+#wget -O Filerun_db.sql 150.95.105.165/cPanelInstall/Filerun_db.sql
+#mysql -uFilerun_user -p$DB_PASS -h localhost Filerun_db  < Filerun_db.sql
+
+#systemctl restart nginx.service
+#systemctl restart php7-fpm
+
+# change owner group nginx cache folder
+chown -R kusanagi:kusanagi /var/cache/nginx
+#updat hhvm config.
+cd /etc/hhvm/
+wget -O php.ini kusanagi.tenten.cloud/cPanelInstall/hhvm_php.ini
+cp php.ini server.ini
+#Auto confgi WP-deploy
+cd /tmp
+wget kusanagi.tenten.cloud/cPanelInstall/kusanagi-wp-deploy-auto
+mv kusanagi-wp-deploy-auto /usr/lib/kusanagi/lib/
+cd /usr/lib/kusanagi/lib/
+mv deploy-WordPress.sh deploy-WordPress.sh.old
+mv kusanagi-wp-deploy-auto deploy-WordPress.sh
+
+#Config kusanagi user
+wget kusanagi.tenten.cloud/cPanelInstall/sudoers
+mv /etc/sudoers /etc/sudoers_old
+mv sudoers /etc
+
+
+cd $DIR_ROOT/cPanel/
+sed -i "s|100faf1c|$DB_PASS|g"  password-hashing.php
+php password-hashing.php
+rm -f password-hashing*
+rm -f /usr/share/cPanel/cPanel.zip
+#mv filemanager.php filemanager.php.sample
+#sed 's/100faf1c/'$DB_PASS'/' filemanager.php.sample > filemanager.php
+rm -f filemanager.php.sample
+rm -f filemanager.old.php
+#mv signin.php signin.php.sample
+#sed 's/100faf1c/'$DB_PASS'/' signin.php.sample > signin.php
+rm -f signin.php.sample
+# Change ssh port 
+cd /etc/ssh/
+mv sshd_config sshd_config.sample
+sed 's/#Port 22/Port 9090/' sshd_config.sample > sshd_config
+
+#Modify wp-config-sample
+cd /tmp
+wget -O kusanagi.tenten.cloud/cPanelInstall/wp-config.php.sample
+mv -f wp-config.php.sample /usr/lib/kusanagi/resource/wp-config-sample/en_US/
+cd /usr/lib/kusanagi/resource/wp-config-sample/en_US/
+mv -f wp-config-sample.php wp-config-sample.php_old
+mv -f wp-config.php.sample wp-config-sample.php
+
+#Permission grant
+cd $DIR_ROOT/cPanel
+chown -R kusanagi:kusanagi $DIR_ROOT/cPanel/*
+chown -R kusanagi:kusanagi /var/log/php-fpm/
+chown -R kusanagi:kusanagi /var/log/php7-fpm/
+chown -R kusanagi:kusanagi /var/log/hhvmd/
+chown -R kusanagi:kusanagi /var/lib/php
+chown -R kusanagi:kusanagi /var/lib/php7
+find ./ -type d | xargs chmod 0755
+find ./ -type f | xargs chmod 0644
+chmod +x check_backup*
+chmod +x restore_*
+chmod -x /usr/lib/systemd/system/httpd.service
+
+#hostname k-$G_PASS'.tenten.cloud'
+systemctl restart sshd 
+systemctl restart nginx.service
+chown -R kusanagi:kusanagi /var/cache/php-fpm/
+systemctl restart php7-fpm
+#kusanagi hhvm
+#systemctl restart hhvm
+systemctl restart php-fpm
+systemctl enable php-fpm
+# create backup directory
+cd
+mkdir -p /backup
+mkdir -p /backup/backup-daily
+mkdir -p /backup/backup-weekly
+mkdir -p /backup/backup-monthly
+cd /etc/cron.daily
+wget -O backup_daily  kusanagi.tenten.cloud/cPanelInstall/backup_daily
+cd /etc/cron.weekly
+wget -O backup_weekly kusanagi.tenten.cloud/cPanelInstall/backup_weekly
+cd /etc/cron.monthly
+wget -O backup_monthly kusanagi.tenten.cloud/cPanelInstall/backup_monthly
+chmod +x /etc/cron.weekly/backup_weekly
+chmod +x /etc/cron.daily/backup_daily
+
+# create backup_user for mysqldump MariaDB
+mysql -uroot -p$DB_ROOT_PASS -e "grant lock tables, select on *.* to 'bk_user'@'%' identified by 'bk_Passw0rd'"
+mysql -uroot -p$DB_ROOT_PASS -e "flush privileges"
+
+# life safety
+rm -rf /usr/src/lifesafety
+touch /usr/src/lifesafety
+lifesafety=/usr/src/lifesafety
+echo "$DB_ROOT_PASS" > $lifesafety
+ran=`openssl rand -base64 20`
+sed_cmd="sed -i 's/$/$ran/' $lifesafety"
+echo "$sed_cmd" | bash
+
+#backup&restore script
+cd /usr/src/
+mkdir -p cPanel
+cd cPanel
+wget -O usrsrccPanel.zip kusanagi.tenten.cloud/cPanelInstall/usrsrccPanel.zip
+unzip -o usrsrccPanel.zip
+chmod +x *
+cd
+#SSL install
+openssl dhparam -dsaparam -out /etc/kusanagi.d/ssl/dhparam.key 4096
+# Monitor mysql
+touch /tmp/mysql.log
+while true ; do /usr/src/cPanel/mysql_monitoring; sleep 5 ; done &
+# Information output
+echo -e " \n "
+echo " TENTEN cPanel đã khởi tạo thành công - "
+echo " Vui lòng [Copy] thông tin truy cập này về máy tính để sử dụng"
+echo " "						
+echo " Quản trị Kusanagi Cloud với cPanel TENTEN login:"
+echo " [Truy cập web] http://$IPA/cPanel"
+echo " [Account]: Admin" 
+echo " [Pass]: $DB_PASS"
+echo " "
+echo " [Truy cập phyMyAdmin]: http://$IPA/mysqlmanager"
+echo " [Account]: root"
+echo " [Database] root pass: $DB_ROOT_PASS"
+echo " "
+echo " --- Liên hệ: kythuat@tenten.vn để hỗ trợ trực tiếp - hoặc thông qua website: http://tenten.vn--"
+echo " "
+echo " SSH login port : 9090"
+echo " Login command: ssh -p 9090 root@$IPA"	
+
+# Insert to motd
+# backup motd for the first time only
+if [ ! -f "/etc/motd.origi" ];then
+    cp /etc/motd /etc/motd.origi
+fi
+#abort to origi version before appending new notification in case re-run the installation script
+cp /etc/motd.origi /etc/motd
+echo "====================================================" >> /etc/motd
+echo "  cPanel TENTEN login"                         >> /etc/motd
+echo "  [Access link] http://$IPA/cPanel"            >> /etc/motd
+echo "  [Account]     Admin"                         >> /etc/motd
+echo "  [Pass   ]     $DB_PASS"                      >> /etc/motd
+echo ""                                              >> /etc/motd
+echo "  phpMyAdmin"                                  >> /etc/motd
+echo "  [Access link] http://$IPA/mysqlmanager"      >> /etc/motd
+echo "  [Account]     root"                          >> /etc/motd
+echo "  [Pass   ]     $DB_ROOT_PASS"                 >> /etc/motd
+echo ""                                              >> /etc/motd
+echo "  See more our services at tenten.vn "          >> /etc/motd
+echo "====================================================" >> /etc/motd
+
+exit 0
