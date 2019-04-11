@@ -74,7 +74,7 @@ read_options(){
 		6 ) 
 			mkdir /etc/auto/
 			curl -fsSL https://script.manhtuong.net/auto/404_kusanagi_auto.sh -o /etc/auto/404_kusanagi_auto.sh
-			crontab -l | { cat; echo "* * * * * sh /etc/auto/404_kusanagi_auto.sh"; } | crontab -
+			crontab -l | { cat; echo "* * * * * sh /etc/auto/404_kusanagi_auto.sh > /dev/null 2>&1"; } | crontab -
 			echo "Cong Cu Se Chay Tu Dong Sau 1 Phut"
 			read -p "Press enter to continue"
 			break
