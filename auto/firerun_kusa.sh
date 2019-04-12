@@ -13,7 +13,8 @@ rm -rf /tmp/tmpfilecpanelfile
 
 while :
 	do
-		IS="$(curl http://163.44.206.228/filerun/ 2>&1 | grep 403 | sed 's/[^0-9]*//g' | sed -n 1p)"
+		IPA=`ifconfig eth0 | grep 'inet' | awk '{print $2}'| head -1`
+		IS="$(curl http://$IPA/filerun/ 2>&1 | grep 403 | sed 's/[^0-9]*//g' | sed -n 1p)"
 		if [[ "$IS" == "403" ]]; then
 			mkdir -p /usr/share/filerun
 			cd /usr/share/filerun
