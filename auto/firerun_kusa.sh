@@ -18,7 +18,7 @@ while :
 		if [[ "$IS" == "403" ]]; then
 			mkdir -p /usr/share/filerun
 			cd /usr/share/filerun
-			wget -O https://kusanagi.tenten.cloud/cPanelInstall/Filerun.zip
+			curl -o Filerun.zip https://kusanagi.tenten.cloud/cPanelInstall/Filerun.zip
 			unzip Filerun.zip
 		fi
 done
