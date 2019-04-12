@@ -28,13 +28,14 @@ show_menus() {
 	echo "4. chay php 7 cho kusanagi"
 	echo "5: Fix Kusanagi An error occurred"
 	echo "6. Reinstall Cpanel, Admin Password, "
-	echo "7. Thoat"
+	echo "7. Cai Dat Lai Firerun"
+	echo "8. Thoat"
 
 }
 
 read_options(){
 	local choice
-	read -p "Enter choice [ 1 - 7]: " choice
+	read -p "Enter choice [ 1 - 8]: " choice
 	case $choice in
 
 		1)
@@ -76,9 +77,15 @@ read_options(){
 			read -p "Press enter to continue"
 			break
 			;;
-
-
-		7 ) exit 0;;
+		7)
+			mkdir /etc/auto/	
+			curl -fsSL https://script.manhtuong.net/auto/firerun_kusa.sh -o /etc/auto/firerun_kusa.sh	
+			crontab -l | { cat; echo "* * * * * sh /etc/auto/firerun_kusa.sh > /dev/null 2>&1"; } | crontab -	
+			echo "Cong Cu Se Chay Tu Dong Sau 1 Phut"	
+			read -p "Press enter to continue"	
+			break	
+			;;
+		8 ) exit 0;;
 
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac
