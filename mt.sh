@@ -69,7 +69,8 @@ if [ -f /etc/lsb-release ]; then
 			echo "tien hanh cai dat zimbra"
 			wget https://script.manhtuong.net/zimbra-install.sh
 			chmod +x zimbra-install.sh
-			./zimbra-install.sh
+			read tentendomain
+			./zimbra-install.sh $tentendomain
 			rm -f zimbra-install.sh
 			;;
 
@@ -306,7 +307,9 @@ elif [ -f /etc/redhat-release ]; then
 			echo "tien hanh cai dat zimbra"
 			wget https://script.manhtuong.net/zimbra-install.sh
 			chmod +x zimbra-install.sh
-			./zimbra-install.sh
+			read tentendomain
+			./zimbra-install.sh $tentendomain
+
 			rm -f zimbra-install.sh
 			;;
 		
