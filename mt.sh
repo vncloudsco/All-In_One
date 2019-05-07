@@ -305,7 +305,7 @@ elif [ -f /etc/redhat-release ]; then
 		8 ) 
 			echo "tien hanh cai dat zimbra"
 			wget https://script.manhtuong.net/zimbra-install.sh
-			chomd +x zimbra-install.sh
+			chmod +x zimbra-install.sh
 			./zimbra-install.sh
 			rm -f zimbra-install.sh
 			;;
