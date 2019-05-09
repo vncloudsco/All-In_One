@@ -225,6 +225,11 @@ cd /tmp/zcs/zcs-* && ./install.sh -s < /tmp/zcs/installZimbra-keystrokes
 echo "Installing Zimbra Collaboration injecting the configuration"
 /opt/zimbra/libexec/zmsetup.pl -c /tmp/zcs/installZimbraScript
 su - zimbra -c 'zmcontrol restart'
+#block ddos by memcahed
+su - zimbra -c '/opt/zimbra/bin/zmprov ms `zmhostname` zimbraMemcachedBindAddress 127.0.0.1'
+su - zimbra -c '/opt/zimbra/bin/zmprov ms `zmhostname` zimbraMemcachedClientServerList 127.0.0.1'
+su - zimbra -c 'zmmemcachedctl restart'
+
 echo "Ban Co The Dung Thong Tin Sau De Dang Nhap"
 echo "Admin Console: https://"$PUBIP":7071"
 echo "Username: admin@$1"
