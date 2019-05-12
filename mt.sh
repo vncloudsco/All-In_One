@@ -70,7 +70,7 @@ if [ -f /etc/lsb-release ]; then
 			wget https://script.manhtuong.net/zimbra-install.sh
 			chmod +x zimbra-install.sh
 			read tentendomain -p "nhap domain ban can cai: "
-			./zimbra-install.sh $tentendomain
+			sh zimbra-install.sh $tentendomain
 			rm -f zimbra-install.sh
 			;;
 
@@ -308,7 +308,7 @@ elif [ -f /etc/redhat-release ]; then
 			wget https://script.manhtuong.net/zimbra-install.sh
 			chmod +x zimbra-install.sh
 			read tentendomain -p "nhap domain ban can cai: "
-			./zimbra-install.sh $tentendomain
+			sh zimbra-install.sh $tentendomain
 
 			rm -f zimbra-install.sh
 			;;
