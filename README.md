@@ -20,7 +20,7 @@
 chạy một lệnh duy nhất
 
 ```
-curl -L -o control.sh control.manhtuong.net && sh control.sh
+curl -L control.manhtuong.net && sh
 ```
 
 ### Support Install Openvpn On Centos
