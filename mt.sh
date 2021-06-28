@@ -77,7 +77,7 @@ if [ -f /etc/lsb-release ]; then
 			;;
 
 			4 ) 
-				echo "chuan bi cai dat docker"
+				echo "chuan bi cai dat plesk"
 				curl -L -o installer.sh https://autoinstall.plesk.com/one-click-installer && sh installer.sh
 				;;
 			5 ) 
