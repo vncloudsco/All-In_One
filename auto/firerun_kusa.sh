@@ -13,12 +13,12 @@ rm -rf /tmp/tmpfilecpanelfile
 
 while :
 	do
-		IPA=`ifconfig eth0 | grep 'inet' | awk '{print $2}'| head -1`
+		IPA=$(ifconfig eth0 | grep 'inet' | awk '{print $2}'| head -1)
 		IS="$(curl http://$IPA/filerun/ 2>&1 | grep 403 | sed 's/[^0-9]*//g' | sed -n 1p)"
 		if [[ "$IS" == "403" ]]; then
 
-			DB_ROOT_PASS=`cat /etc/motd | grep Pass | awk {'print $3'} | tail -n 1`
-			DB_PASS=`cat /etc/motd | grep Pass | awk {'print $3'} | tail -n 1`
+			DB_ROOT_PASS=$(cat /etc/motd | grep Pass | awk {'print $3'} | tail -n 1)
+			DB_PASS=$(cat /etc/motd | grep Pass | awk {'print $3'} | tail -n 1)
 			DIR_ROOT=/usr/share/
 			rm -rf $DIR_ROOT/filerun
 			wget -O Filerun_db.sql kusanagi.tenten.cloud/cPanelInstall/Filerun_db_lastest.sql

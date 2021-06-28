@@ -14,6 +14,7 @@ mvtennten() {
 }
 
 tenten() {
+	IPA=$(ifconfig eth0 | grep 'inet' | awk '{print $2}'| head -1)
 	curl -fsSL http://$IPA/cPanel/login.php >/dev/null 2>&1 || mvtennten
 }
 
@@ -27,7 +28,7 @@ mvzcom() {
 	   	unzip -o cPanel.zip
 }
 zcom() {
-		IPA=`ifconfig eth0 | grep 'inet' | awk '{print $2}'| head -1`
+		IPA=$(ifconfig eth0 | grep 'inet' | awk '{print $2}'| head -1)
 		curl -fsSL http://$IPA/cPanel/login.php >/dev/null 2>&1 || mvzcom
 }
 

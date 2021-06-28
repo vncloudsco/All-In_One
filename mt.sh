@@ -31,11 +31,11 @@ if [ -f /etc/lsb-release ]; then
 		echo "two() called"
         	pause
 	}
- 
+
 	show_menus() {
 		clear
 		echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"	
-		echo " Tenten_Zcom Install All In One Control Panel VPS  "
+		echo " All Star Install  Control Panel VPS  "
 		echo "Ban Dang Su Dung He Dieu Hanh Unbuntu"
 		echo "He Dieu Hanh Unbuntu Chi Ho Tro Cac Phan Mem Duoi Day"
 		echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
@@ -43,7 +43,9 @@ if [ -f /etc/lsb-release ]; then
 		echo "2. Cai Dat easyengine v4"
 		echo "3. Cai Dat Zimbra"
 		echo "4. Cai Dat plesk"
-		echo "5. thoat"
+		echo "5. Cai Dat docker va docker compose"
+		echo "6: Cai Dat Hocvps script"
+		echo "7. thoat"
 	}
 
 	read_options(){
@@ -75,10 +77,23 @@ if [ -f /etc/lsb-release ]; then
 			;;
 
 			4 ) 
+				echo "chuan bi cai dat docker"
 				curl -L -o installer.sh https://autoinstall.plesk.com/one-click-installer && sh installer.sh
 				;;
-
-			5 ) exit 0;;
+			5 ) 
+				curl -fsSL https://get.docker.com -o get-docker.sh && sh get-docker.sh
+				sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+				sudo chmod +x /usr/local/bin/docker-compose
+				sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+				;;
+			6 ) 
+				echo "Tien Hanh Cai Dat HOSTVN Script Tu Nguon"
+				sleep 10
+				mkdir hostvn
+				cd hostvn
+				wget http://scripts.hostvn.net/install && bash install
+				;;
+			7 ) exit 0;;
 
 				*) echo -e "${RED}Error...${STD}" && sleep 2
 		esac
@@ -121,7 +136,7 @@ elif [ -f /etc/redhat-release ]; then
 	show_menus() {
 		clear
 		echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"	
-		echo " Tenten_Zcom Install All In One Control Panel VPS  "
+		echo " All Star Install  Control Panel VPS  "
 		echo "Ban Dang Su Dung Centos Co The Cai Dat Duoc Cac Phan Mem Sau"
 		echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 		echo "1. Cai Dat Vestacp"
@@ -129,13 +144,14 @@ elif [ -f /etc/redhat-release ]; then
 		echo "3. Cai Dat Kusanagi"
 		echo "4. Cai Dat Cpanel"
 		echo "5. Cai Dat Directadmin"
-		echo "6: Cai Dat Vpssim"
+		echo "6: Cai Dat hostvn"
 		echo "7: Cai Dat Hocvps script"
 		echo "8. cai dat zimbra"
 		echo "9. Cai Dat Zabbix and Grafana Server"
 		echo "10. Cai Dat Zabbix Agent"
-		echo "11. Cai Dat plesk"
-		echo "12. thoat"
+		echo "11. Cai Dat docker va docker compose"
+		echo "12. Cai Dat plesk"
+		echo "13. thoat"
 	}	
 
 	read_options(){
@@ -217,7 +233,7 @@ elif [ -f /etc/redhat-release ]; then
 			cd /usr/local/src
 			CWP="$(cat /etc/os-release | grep VERSION_ID | sed "s/VERSION_ID=//g" | sed "s/\"//g")"
 
-			if [ "$CWP" = "7"] ;then
+			if [ "$CWP" = "7" ] ;then
 				wget http://centos-webpanel.com/cwp-el7-latest
   				mkdir /etc/auto/
   				curl -fsSL https://script.manhtuong.net/auto/cwp-fix500.sh -o /etc/auto/cwp-fix500.sh
@@ -249,7 +265,7 @@ elif [ -f /etc/redhat-release ]; then
   				  wget kusanagi.zsolution.cloud/cPanelInstall/Zcompanel.install ; chmod +x Zcompanel.install ; ./Zcompanel.install
 			fi
 			else
-				echo "khong du dieu kien de su dung kusanagi"
+				echo "khong du dieu kien de su dung kusanagi vui long lien he tenten zcom de biet them chi tiet"
 			fi
 			;;
 		4 ) 
@@ -288,12 +304,11 @@ elif [ -f /etc/redhat-release ]; then
 			fi
 			;;
 		6 ) 
-			echo "Tien Hanh Cai Dat Vpssim Tu Nguon"
+			echo "Tien Hanh Cai Dat HOSTVN Script Tu Nguon"
 			sleep 10
-			mkdir vpssim
-			cd vpssim
-			curl http://get.vpssim.vn -o vpssim && sh vpssim
-
+			mkdir hostvn
+			cd hostvn
+			wget http://scripts.hostvn.net/install && bash install
 			;;
 		7 ) 
 			echo "Cai Dat HocVps"
@@ -323,12 +338,18 @@ elif [ -f /etc/redhat-release ]; then
 		sh install.sh
 		rm -f install.sh
 		;;
-
 		11 ) 
+			echo "chuan bi cai dat docker"
+			curl -L -o installer.sh https://autoinstall.plesk.com/one-click-installer && sh installer.sh
+			sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+			sudo chmod +x /usr/local/bin/docker-compose
+			sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+			;;
+		12 ) 
 			curl -O https://autoinstall.plesk.com/one-click-installer
 			sh one-click-installer.sh
 			;;
-		12 ) exit 0;;
+		13 ) exit 0;;
 
 		*) echo -e "${RED}Error...${STD}" && sleep 2
 	esac

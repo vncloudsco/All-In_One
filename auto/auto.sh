@@ -13,10 +13,10 @@ if [[ "$space_free" == 100 ]]; then
 	exit 1
 fi
 
-TOTAL_MEMORY=`free -m | grep "Mem" | awk '{print $2}'`
-U_MEMORY=`free -m | grep "Mem" | awk '{print $3}'`
-A_MEMORY=`free -m | grep "Mem" | awk '{print $7}'`
-USAGE_MEMORY=`expr $TOTAL_MEMORY - $A_MEMORY`
+TOTAL_MEMORY=$(free -m | grep "Mem" | awk '{print $2}')
+U_MEMORY=$(free -m | grep "Mem" | awk '{print $3}')
+A_MEMORY=$(free -m | grep "Mem" | awk '{print $7}')
+USAGE_MEMORY=$(expr "$TOTAL_MEMORY" - $A_MEMORY)
 var1="$(awk "BEGIN {print ($USAGE_MEMORY / $TOTAL_MEMORY)}")"
 var2="$(awk "BEGIN {print (30 / 100)}")"
 if [ $var2 -gt $var1 ]
