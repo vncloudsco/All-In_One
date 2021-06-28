@@ -1,5 +1,3 @@
-## Diễn Đàn Hỗ Trợ Và Xử Lý Bug: 
-### [https://diendan.manhtuong.net/](https://diendan.manhtuong.net/)
 
 
 ###  install all control
@@ -95,3 +93,4 @@ winrar, chrome, flashplayerplugin, firefox, winscp, brave, vnc-viewer, putty, di
 
 [https://script.manhtuong.net/windows/auto_config.bat](https://script.manhtuong.net/windows/auto_config.bat)
 
+##### mọi vấn đề về sự cố vui lòng tạo issues trên github của chúng tôi
