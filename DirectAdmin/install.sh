@@ -22,12 +22,12 @@ fi
 
 function eth0_creat()
 {
-    echo "cau hionh card mang de kich hoat key"
+    echo "cau hinh card mang de kich hoat key"
     ifconfig eth0:100 176.99.3.34 netmask 255.255.255.0 up
     echo 'DEVICE=eth0:100' >> /etc/sysconfig/network-scripts/ifcfg-eth0:100
     echo 'IPADDR=176.99.3.34' >> /etc/sysconfig/network-scripts/ifcfg-eth0:100
+    echo 'IPADDR=176.99.3.34' >> /etc/sysconfig/network-scripts/ifcfg-eth0:100
     echo 'NETMASK=255.255.255.0' >> /etc/sysconfig/network-scripts/ifcfg-eth0:100
-    service network restart
     sed -i 's/^ethernet_dev=.*/ethernet_dev=eth0:100/' /usr/local/directadmin/conf/directadmin.conf
 }
 
