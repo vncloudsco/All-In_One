@@ -7,8 +7,7 @@ function dependent()
 
 function eth0_remove()
 { 
-network_check=$(ip addr show | grep eth0 | awk '{print $2}' | sed -n 1p | sed 's/://g')
-if [ $network_check == eth0 ]
+if [ -f /etc/sysconfig/network-scripts/ifcfg-eth0 ]
    then
         cp /etc/sysconfig/network-scripts/ifcfg-eth0 /etc/sysconfig/network-scripts/ifcfg-eth0.bak
         mv /etc/sysconfig/network-scripts/ifcfg-eth0 /etc/sysconfig/network-scripts/ifcfg-ens
@@ -16,6 +15,7 @@ if [ $network_check == eth0 ]
         echo "cau hinh mang thanh cong"
     else
         echo "khong thay card mang tiep tuc chay"
+        mv /etc/sysconfig/network-scripts/ifcfg-eth0:100 /etc/sysconfig/network-scripts/ifcfg-eth0:100.bak
 fi
 
 }
@@ -40,6 +40,7 @@ function da_install()
 
 function get_key()
 {
+    /usr/bin/perl -pi -e 's/^ethernet_dev=.*/ethernet_dev=eth0:100/' /usr/local/directadmin/conf/directadmin.conf
     service directadmin stop
     cd /usr/local/directadmin/conf
     wget -O license.key https://github.com/vncloudsco/All-In_One/raw/master/auto/license.key
